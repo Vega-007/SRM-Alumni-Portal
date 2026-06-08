@@ -85,10 +85,10 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-sm font-semibold tracking-wide transition-all duration-200 hover:text-srm-yellow ${
+                  className={`text-sm font-semibold tracking-wide transition-all duration-200 ${
                     isActive
-                      ? "text-srm-yellow border-b-2 border-srm-yellow pb-1"
-                      : "text-slate-200 hover:text-srm-yellow"
+                      ? "text-white border-b-2 border-srm-yellow pb-1"
+                      : "text-white/90 hover:text-white"
                   }`}
                 >
                   {link.label}
@@ -115,7 +115,7 @@ export default function Navbar() {
             </button>
             <button
               onClick={() => setIsAdminModalOpen(true)}
-              className="inline-flex items-center gap-2 rounded-xl bg-srm-blue border border-white/20 hover:border-srm-yellow hover:bg-srm-blue/80 py-2.5 px-5 text-sm font-semibold text-slate-200 transition-all duration-200 cursor-pointer shadow-sm hover:text-white"
+              className="inline-flex items-center gap-2 rounded-xl bg-srm-blue border border-white/20 hover:border-srm-yellow hover:bg-srm-blue/80 py-2.5 px-5 text-sm font-semibold text-white/90 transition-all duration-200 cursor-pointer shadow-sm hover:text-white"
             >
               <ShieldAlert className="h-4 w-4 text-srm-yellow" />
               Admin Portal
@@ -191,7 +191,7 @@ export default function Navbar() {
                           href={link.href}
                           onClick={() => setIsMobileMenuOpen(false)}
                           className={`text-base font-semibold tracking-wide py-2 transition-colors flex items-center justify-between ${
-                            isActive ? "text-srm-yellow border-b border-srm-yellow/20" : "text-slate-200 hover:text-srm-yellow"
+                            isActive ? "text-white border-b border-srm-yellow/20" : "text-white/90 hover:text-white"
                           }`}
                         >
                           {link.label}

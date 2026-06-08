@@ -56,7 +56,7 @@ export default function Hero() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.1 }}
-                  className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50 leading-[1.15]"
+                  className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-950 dark:text-slate-50 leading-[1.15]"
                 >
                   Our Alumni Across the <span className="text-transparent bg-clip-text bg-gradient-to-r from-srm-yellow via-[#E5A93C] to-gold-600">Globe</span>
                 </motion.h1>
@@ -113,7 +113,7 @@ export default function Hero() {
                     </div>
                   ))}
                 </div>
-                <div className="text-xs text-slate-500 dark:text-slate-400">
+                <div className="text-xs text-slate-500 dark:text-slate-500">
                   <span className="font-semibold text-slate-800 dark:text-slate-200">Join 15,000+ graduates</span> in Silicon Valley, London, Bengaluru, and beyond.
                 </div>
               </motion.div>

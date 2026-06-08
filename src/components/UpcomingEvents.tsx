@@ -39,9 +39,9 @@ export function EventBrochureCard({ event }: { event: AlumniEvent }) {
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent" />
 
         {/* Date Overlay Badge */}
-        <div className="absolute top-4 left-4 bg-slate-950/80 dark:bg-slate-900/95 backdrop-blur-sm border border-white/10 rounded-2xl px-3 py-1.5 flex items-center gap-1.5 shadow-md">
-          <Calendar className="h-3.5 w-3.5 text-srm-yellow shrink-0" />
-          <span className="text-[10px] font-bold text-slate-100 tracking-wide uppercase">{event.date}</span>
+        <div className="absolute top-4 left-4 bg-amber-500/10 border border-amber-500/20 backdrop-blur-sm rounded-2xl px-3 py-1.5 flex items-center gap-1.5 shadow-md">
+          <Calendar className="h-3.5 w-3.5 text-[#E5A93C] shrink-0" />
+          <span className="text-[10px] font-bold text-[#E5A93C] tracking-wide uppercase">{event.date}</span>
         </div>
       </div>
 
@@ -49,7 +49,7 @@ export function EventBrochureCard({ event }: { event: AlumniEvent }) {
       <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
         <div className="space-y-3">
           {/* Time & Location Metadata */}
-          <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500 dark:text-slate-400 font-semibold">
+          <div className="flex flex-wrap items-center gap-3 text-xs text-slate-600 dark:text-slate-400 font-semibold">
             <span className="flex items-center gap-1.5">
               <Clock className="h-3.5 w-3.5 text-srm-lightBlue shrink-0" />
               {event.time}
@@ -62,7 +62,7 @@ export function EventBrochureCard({ event }: { event: AlumniEvent }) {
           </div>
 
           {/* Event Title */}
-          <h3 className="font-display font-bold text-base text-slate-900 dark:text-slate-50 group-hover:text-srm-blue dark:group-hover:text-srm-yellow transition-colors leading-tight">
+          <h3 className="font-display font-bold text-base text-slate-900 dark:text-white group-hover:text-srm-blue dark:group-hover:text-srm-yellow transition-colors leading-tight">
             {event.title}
           </h3>
 

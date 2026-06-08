@@ -19,7 +19,7 @@ export default function EventsViewPage() {
             <CalendarDays className="h-3.5 w-3.5" />
             <span>Alumni Event Board</span>
           </div>
-          <h1 className="font-display text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50 md:text-5xl">
+          <h1 className="font-display text-4xl font-extrabold tracking-tight text-slate-950 dark:text-slate-50 md:text-5xl">
             SRMIST Alumni <span className="text-srm-blue dark:text-srm-yellow">Networking Milestones</span>
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-base text-slate-600 dark:text-slate-400">
@@ -35,7 +35,7 @@ export default function EventsViewPage() {
           <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-xl bg-srm-blue/10 dark:bg-srm-yellow/10 text-srm-blue dark:text-srm-yellow mb-4">
             <Sparkles className="h-5 w-5" />
           </div>
-          <h3 className="font-display font-bold text-lg text-slate-900 dark:text-slate-50">Want to propose or host an event?</h3>
+          <h3 className="font-display font-bold text-lg text-slate-800 dark:text-slate-200">Want to propose or host an event?</h3>
           <p className="text-xs text-slate-600 dark:text-slate-400 mt-2 max-w-lg mx-auto leading-relaxed">
             If you represent a corporate company seeking recruitments or want to host a regional chapter meet in your city, submit your event proposal to the Alumni Relations desk.
           </p>

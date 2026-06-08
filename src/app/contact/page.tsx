@@ -298,7 +298,7 @@ export default function ContactPage() {
             <div className="mt-8 border-t border-slate-100 dark:border-slate-800/60 pt-6">
               <div className="flex items-start gap-3 rounded-lg bg-srm-blue/5 dark:bg-srm-blue/20 p-4 border border-srm-blue/10">
                 <AlertCircle className="h-5 w-5 text-srm-blue dark:text-srm-lightBlue shrink-0 mt-0.5" />
-                <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
+                <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
                   Verification status requests take 2-3 working days. Updates require uploading copies of academic transcripts or alumni membership credentials.
                 </p>
               </div>
@@ -459,7 +459,7 @@ export default function ContactPage() {
 
                         {/* Full Name */}
                         <div className="space-y-1.5">
-                          <label htmlFor="fullName" className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider flex items-center gap-1">
+                          <label htmlFor="fullName" className="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider flex items-center gap-1">
                             <User className="h-3.5 w-3.5 text-srm-blue dark:text-srm-lightBlue" />
                             Full Name (as per SRM records)
                           </label>
@@ -472,7 +472,7 @@ export default function ContactPage() {
                             placeholder="e.g. Adithya Varadhan"
                             className={`w-full rounded-xl bg-slate-50 dark:bg-slate-950/60 border ${
                               errors.fullName ? "border-rose-500 focus:ring-rose-500/30" : "border-slate-200 dark:border-slate-800 focus:ring-srm-blue/30 dark:focus:ring-srm-yellow/30"
-                            } px-4 py-3 text-sm text-slate-900 dark:text-slate-50 outline-none focus:ring-4 transition-all`}
+                            } px-4 py-3 text-sm text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 outline-none focus:ring-4 transition-all`}
                           />
                           {errors.fullName && (
                             <p className="text-xs text-rose-500 font-semibold flex items-center gap-1">
@@ -485,7 +485,7 @@ export default function ContactPage() {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                           {/* Batch Year */}
                           <div className="space-y-1.5">
-                            <label htmlFor="batch" className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider flex items-center gap-1">
+                            <label htmlFor="batch" className="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider flex items-center gap-1">
                               <GraduationCap className="h-3.5 w-3.5 text-srm-blue dark:text-srm-lightBlue" />
                               Graduation Batch
                             </label>
@@ -496,7 +496,7 @@ export default function ContactPage() {
                               onChange={handleInputChange}
                               className={`w-full rounded-xl bg-slate-50 dark:bg-slate-950/60 border ${
                                 errors.batch ? "border-rose-500 focus:ring-rose-500/30" : "border-slate-200 dark:border-slate-800 focus:ring-srm-blue/30 dark:focus:ring-srm-yellow/30"
-                              } px-4 py-3 text-sm text-slate-900 dark:text-slate-50 outline-none focus:ring-4 transition-all appearance-none`}
+                              } px-4 py-3 text-sm text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 outline-none focus:ring-4 transition-all appearance-none`}
                             >
                               <option value="">Select Year</option>
                               {batchYears.map((year) => (
@@ -512,7 +512,7 @@ export default function ContactPage() {
 
                           {/* Degree / Branch */}
                           <div className="space-y-1.5">
-                            <label htmlFor="degree" className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider flex items-center gap-1">
+                            <label htmlFor="degree" className="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider flex items-center gap-1">
                               <Building className="h-3.5 w-3.5 text-srm-blue dark:text-srm-lightBlue" />
                               Degree & Branch
                             </label>
@@ -525,7 +525,7 @@ export default function ContactPage() {
                               placeholder="e.g. B.Tech CSE"
                               className={`w-full rounded-xl bg-slate-50 dark:bg-slate-950/60 border ${
                                 errors.degree ? "border-rose-500 focus:ring-rose-500/30" : "border-slate-200 dark:border-slate-800 focus:ring-srm-blue/30 dark:focus:ring-srm-yellow/30"
-                              } px-4 py-3 text-sm text-slate-900 dark:text-slate-50 outline-none focus:ring-4 transition-all`}
+                              } px-4 py-3 text-sm text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 outline-none focus:ring-4 transition-all`}
                             />
                             {errors.degree && (
                               <p className="text-xs text-rose-500 font-semibold flex items-center gap-1">
@@ -554,7 +554,7 @@ export default function ContactPage() {
 
                         {/* Employing Corporation */}
                         <div className="space-y-1.5">
-                          <label htmlFor="company" className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider flex items-center gap-1">
+                          <label htmlFor="company" className="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider flex items-center gap-1">
                             <Building className="h-3.5 w-3.5 text-srm-blue dark:text-srm-lightBlue" />
                             Employing Company / Corporation
                           </label>
@@ -567,7 +567,7 @@ export default function ContactPage() {
                             placeholder="e.g. Google India / Zoho"
                             className={`w-full rounded-xl bg-slate-50 dark:bg-slate-950/60 border ${
                               errors.company ? "border-rose-500 focus:ring-rose-500/30" : "border-slate-200 dark:border-slate-800 focus:ring-srm-blue/30 dark:focus:ring-srm-yellow/30"
-                            } px-4 py-3 text-sm text-slate-900 dark:text-slate-50 outline-none focus:ring-4 transition-all`}
+                            } px-4 py-3 text-sm text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 outline-none focus:ring-4 transition-all`}
                           />
                           {errors.company && (
                             <p className="text-xs text-rose-500 font-semibold flex items-center gap-1">
@@ -580,7 +580,7 @@ export default function ContactPage() {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                           {/* Job Title */}
                           <div className="space-y-1.5">
-                            <label htmlFor="jobTitle" className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider flex items-center gap-1">
+                            <label htmlFor="jobTitle" className="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider flex items-center gap-1">
                               <Briefcase className="h-3.5 w-3.5 text-srm-blue dark:text-srm-lightBlue" />
                               Job Designation
                             </label>
@@ -593,7 +593,7 @@ export default function ContactPage() {
                               placeholder="e.g. Senior Software Engineer"
                               className={`w-full rounded-xl bg-slate-50 dark:bg-slate-950/60 border ${
                                 errors.jobTitle ? "border-rose-500 focus:ring-rose-500/30" : "border-slate-200 dark:border-slate-800 focus:ring-srm-blue/30 dark:focus:ring-srm-yellow/30"
-                              } px-4 py-3 text-sm text-slate-900 dark:text-slate-50 outline-none focus:ring-4 transition-all`}
+                              } px-4 py-3 text-sm text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 outline-none focus:ring-4 transition-all`}
                             />
                             {errors.jobTitle && (
                               <p className="text-xs text-rose-500 font-semibold flex items-center gap-1">
@@ -604,7 +604,7 @@ export default function ContactPage() {
 
                           {/* CTC Package */}
                           <div className="space-y-1.5">
-                            <label htmlFor="ctc" className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider flex items-center gap-1">
+                            <label htmlFor="ctc" className="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider flex items-center gap-1">
                               <DollarSign className="h-3.5 w-3.5 text-srm-blue dark:text-srm-lightBlue" />
                               Annual Package (CTC in LPA)
                             </label>
@@ -617,7 +617,7 @@ export default function ContactPage() {
                               placeholder="e.g. 18.5"
                               className={`w-full rounded-xl bg-slate-50 dark:bg-slate-950/60 border ${
                                 errors.ctc ? "border-rose-500 focus:ring-rose-500/30" : "border-slate-200 dark:border-slate-800 focus:ring-srm-blue/30 dark:focus:ring-srm-yellow/30"
-                              } px-4 py-3 text-sm text-slate-900 dark:text-slate-50 outline-none focus:ring-4 transition-all`}
+                              } px-4 py-3 text-sm text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 outline-none focus:ring-4 transition-all`}
                             />
                             {errors.ctc && (
                               <p className="text-xs text-rose-500 font-semibold flex items-center gap-1">
@@ -671,7 +671,7 @@ export default function ContactPage() {
                           {isUploading ? (
                             <div className="space-y-3 py-4">
                               <Loader2 className="h-10 w-10 text-srm-blue dark:text-srm-lightBlue animate-spin mx-auto" />
-                              <span className="text-sm font-semibold text-slate-700 dark:text-slate-300 block">Uploading verification file...</span>
+                              <span className="text-sm font-semibold text-slate-800 dark:text-slate-200 block">Uploading verification file...</span>
                               <div className="w-full max-w-xs bg-slate-200 dark:bg-slate-800 h-2 rounded-full mx-auto overflow-hidden">
                                 <div className="bg-srm-blue dark:bg-srm-lightBlue h-full transition-all duration-150" style={{ width: `${uploadProgress}%` }} />
                               </div>
@@ -757,7 +757,7 @@ export default function ContactPage() {
                       type="button"
                       onClick={handleBack}
                       disabled={isSubmitting || isUploading}
-                      className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-slate-400 px-5 py-2.5 text-sm font-semibold text-slate-700 dark:text-slate-300 transition-all shadow-sm active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                      className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-slate-400 px-5 py-2.5 text-sm font-semibold text-slate-800 dark:text-slate-200 transition-all shadow-sm active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
                     >
                       <ChevronLeft className="h-4 w-4" />
                       Back

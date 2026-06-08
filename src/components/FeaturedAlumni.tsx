@@ -26,10 +26,10 @@ function AlumniCard({ alumni }: { alumni: Alumni }) {
       
       {/* Profile info */}
       <div className="flex-1 min-w-0">
-        <h4 className="font-display font-bold text-sm text-slate-900 dark:text-slate-50 group-hover:text-srm-yellow transition-colors truncate">
+        <h4 className="font-display font-bold text-sm text-slate-900 dark:text-white group-hover:text-srm-yellow transition-colors truncate">
           {alumni.name}
         </h4>
-        <p className="text-[10px] text-slate-500 dark:text-slate-400 font-extrabold truncate mt-0.5 uppercase tracking-wide">
+        <p className="text-[10px] text-slate-600 dark:text-slate-400 font-extrabold truncate mt-0.5 uppercase tracking-wide">
           {getDepartmentLabel(alumni)}
         </p>
         
@@ -38,16 +38,16 @@ function AlumniCard({ alumni }: { alumni: Alumni }) {
           <div className="flex h-5 w-5 items-center justify-center rounded bg-slate-200 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-[9px] font-black text-slate-600 dark:text-slate-400">
             {alumni.companyLogoText}
           </div>
-          <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400 truncate">{alumni.company}</span>
+          <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400 truncate">{alumni.company}</span>
         </div>
       </div>
 
       {/* Prominent Gold Package Tag */}
       <div className="shrink-0 flex flex-col items-end justify-between h-full py-0.5">
-        <div className="text-[10px] font-black tracking-wide text-srm-red dark:text-srm-yellow border border-srm-red/35 dark:border-srm-yellow/30 bg-srm-red/5 dark:bg-srm-yellow/5 px-2 py-0.5 rounded-full uppercase">
+        <div className="text-[10px] font-black tracking-wide text-[#E5A93C] border border-amber-500/20 bg-amber-500/10 px-2 py-0.5 rounded-full uppercase">
           {alumni.ctc}
         </div>
-        <span className="text-[8px] text-slate-500 dark:text-slate-400 font-extrabold uppercase tracking-widest mt-1">
+        <span className="text-[8px] text-slate-600 dark:text-slate-400 font-extrabold uppercase tracking-widest mt-1">
           Class of {alumni.batch}
         </span>
       </div>

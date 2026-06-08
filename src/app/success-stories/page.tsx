@@ -19,7 +19,7 @@ export default function SuccessStoriesPage() {
         
         {/* Page Header */}
         <div className="mb-12 text-left">
-          <h1 className="font-display text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50 sm:text-5xl">
+          <h1 className="font-display text-4xl font-extrabold tracking-tight text-slate-955 dark:text-slate-50 sm:text-5xl">
             Success Stories & <span className="text-srm-yellow font-extrabold">Global Reach</span>
           </h1>
           <p className="mt-3 text-base text-slate-600 dark:text-slate-400 max-w-xl">
@@ -35,17 +35,17 @@ export default function SuccessStoriesPage() {
             
             <div className="flex flex-col md:flex-row items-start justify-between gap-6 mb-8">
               <div>
-                <h2 className="font-display text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <h2 className="font-display text-xl font-bold text-slate-800 dark:text-slate-200 flex items-center gap-2">
                   <MapPin className="h-5 w-5 text-srm-yellow" />
                   Global Alumni Map
                 </h2>
-                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                <p className="text-xs text-slate-500 dark:text-slate-500 mt-1">
                   Hover over or tap a hub node to explore the placement metrics in that city.
                 </p>
               </div>
 
               {/* Legend */}
-              <div className="flex items-center gap-4 text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <div className="flex items-center gap-4 text-xs font-semibold text-slate-500 dark:text-slate-500">
                 <div className="flex items-center gap-1.5">
                   <span className="h-2 w-2 rounded-full bg-srm-yellow animate-pulse" />
                   <span>Primary Hubs</span>
@@ -110,18 +110,18 @@ export default function SuccessStoriesPage() {
                           {hub.name}
                         </h4>
                         
-                        <div className="flex items-center gap-1 text-[10px] text-srm-yellow font-bold uppercase mt-1">
+                        <div className="flex items-center gap-1 text-[10px] text-[#E5A93C] font-bold uppercase mt-1">
                           <Users className="h-3 w-3 shrink-0" />
                           <span>{hub.alumniCount}+ Placements</span>
                         </div>
 
                         <div className="border-t border-slate-200 dark:border-slate-900 mt-2 pt-2">
-                          <span className="block text-[9px] font-semibold text-slate-500 uppercase tracking-wider">
+                          <span className="block text-[9px] font-semibold text-slate-500 dark:text-slate-500 uppercase tracking-wider">
                             Primary Employers
                           </span>
                           <div className="flex flex-wrap gap-1 mt-1">
                             {hub.topCompanies.map((c, i) => (
-                              <span key={i} className="text-[9px] bg-slate-200 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-slate-700 dark:text-slate-300 rounded px-1 py-0.5">
+                              <span key={i} className="text-[9px] bg-slate-200 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-slate-600 dark:text-slate-400 rounded px-1 py-0.5">
                                 {c}
                               </span>
                             ))}
@@ -135,7 +135,7 @@ export default function SuccessStoriesPage() {
 
               {/* Dynamic bottom notification box inside map */}
               <div className="absolute bottom-4 left-4 right-4 md:right-auto bg-slate-200/90 dark:bg-slate-900/90 backdrop-blur-sm border border-slate-300 dark:border-slate-800 rounded-xl p-3 max-w-sm pointer-events-none">
-                <p className="text-[11px] text-slate-650 dark:text-slate-400 leading-normal">
+                <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-normal">
                   <span className="font-semibold text-slate-900 dark:text-white">Global Nodes Active:</span> Our alumni are present in {MOCK_MAP_HUBS.length} key global cities, collaborating across organizations to drive digital innovation.
                 </p>
               </div>
@@ -147,10 +147,10 @@ export default function SuccessStoriesPage() {
         {/* SECTION 2: SUCCESS STORIES LIST */}
         <section>
           <div className="mb-10">
-            <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-white">
+            <h2 className="font-display text-2xl font-bold text-slate-800 dark:text-slate-200">
               Graduate <span className="text-srm-yellow">Journeys & Spotlight</span>
             </h2>
-            <p className="text-sm text-slate-550 dark:text-slate-400 mt-1 max-w-xl">
+            <p className="text-sm text-slate-600 dark:text-slate-400 mt-1 max-w-xl">
               Read in-depth narratives detailing graduation, early struggles, career-defining projects, and placement tips.
             </p>
           </div>
@@ -181,10 +181,10 @@ export default function SuccessStoriesPage() {
                         <h3 className="font-display font-bold text-lg text-slate-900 dark:text-white">
                           {story.name}
                         </h3>
-                        <div className="flex flex-col text-xs text-slate-500 dark:text-slate-400 gap-0.5 mt-1">
-                          <span className="font-medium text-slate-700 dark:text-slate-300">{story.degree}</span>
+                        <div className="flex flex-col text-xs text-slate-600 dark:text-slate-400 gap-0.5 mt-1">
+                          <span className="font-medium text-slate-600 dark:text-slate-400">{story.degree}</span>
                           <span>Class of {story.batch}</span>
-                          <span className="text-srm-red dark:text-srm-yellow font-semibold mt-1">
+                          <span className="text-srm-red dark:text-[#E5A93C] font-semibold mt-1">
                             {story.role} @ {story.company}
                           </span>
                         </div>
@@ -201,8 +201,8 @@ export default function SuccessStoriesPage() {
                         </h4>
                       </div>
 
-                      <blockquote className="text-sm font-medium italic text-slate-600 dark:text-slate-300 border-l-2 border-slate-200 dark:border-slate-800 pl-4 py-1 leading-relaxed">
-                        "{story.quote}"
+                      <blockquote className="text-sm font-medium italic text-slate-600 dark:text-slate-400 border-l-2 border-slate-200 dark:border-slate-800 pl-4 py-1 leading-relaxed">
+                        &ldquo;{story.quote}&rdquo;
                       </blockquote>
 
                       {/* Expandable detailed story content */}
@@ -215,7 +215,7 @@ export default function SuccessStoriesPage() {
                             transition={{ duration: 0.3 }}
                             className="overflow-hidden"
                           >
-                            <p className="text-sm text-slate-650 dark:text-slate-400 leading-relaxed pt-2">
+                            <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed pt-2">
                               {story.story}
                             </p>
                           </motion.div>

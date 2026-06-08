@@ -62,7 +62,7 @@ export default function DirectoryPage() {
         
         {/* Header Section */}
         <div className="mb-12 text-left">
-          <h1 className="font-display text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50 sm:text-5xl">
+          <h1 className="font-display text-4xl font-extrabold tracking-tight text-slate-955 dark:text-slate-50 sm:text-5xl">
             Alumni <span className="text-srm-yellow font-extrabold">Directory</span>
           </h1>
           <p className="mt-3 text-base text-slate-600 dark:text-slate-400 max-w-xl">
@@ -76,7 +76,7 @@ export default function DirectoryPage() {
           {/* Sidebar filter pane (col-span-3) */}
           <div className="w-full lg:w-72 shrink-0 rounded-2xl border border-slate-200/80 dark:border-slate-800/60 bg-white/60 dark:bg-slate-950/60 backdrop-blur-md p-6 lg:sticky lg:top-24 shadow-sm relative clear-both mb-6">
             <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-200 dark:border-slate-900">
-              <span className="font-display font-bold text-slate-900 dark:text-slate-50 flex items-center gap-2">
+              <span className="font-display font-bold text-slate-800 dark:text-slate-200 flex items-center gap-2">
                 <SlidersHorizontal className="h-4.5 w-4.5 text-srm-yellow" />
                 Refine Search
               </span>
@@ -92,7 +92,7 @@ export default function DirectoryPage() {
             <div className="space-y-6">
               {/* Name/Keyword search */}
               <div>
-                <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">
+                <label className="block text-xs font-semibold text-slate-500 dark:text-slate-500 uppercase tracking-wider mb-2">
                   Keyword Search
                 </label>
                 <div className="relative">
@@ -112,7 +112,7 @@ export default function DirectoryPage() {
 
               {/* Batch Dropdown */}
               <div>
-                <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">
+                <label className="block text-xs font-semibold text-slate-500 dark:text-slate-500 uppercase tracking-wider mb-2">
                   Graduation Year
                 </label>
                 <select
@@ -134,7 +134,7 @@ export default function DirectoryPage() {
 
               {/* Company Dropdown */}
               <div>
-                <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">
+                <label className="block text-xs font-semibold text-slate-500 dark:text-slate-500 uppercase tracking-wider mb-2">
                   Company / Organization
                 </label>
                 <select
@@ -156,7 +156,7 @@ export default function DirectoryPage() {
             </div>
 
             {/* Matching results info */}
-            <div className="mt-8 pt-4 border-t border-slate-200 dark:border-slate-900 text-xs text-slate-500 dark:text-slate-400">
+            <div className="mt-8 pt-4 border-t border-slate-200 dark:border-slate-900 text-xs text-slate-500 dark:text-slate-500">
               Showing <span className="text-slate-900 dark:text-white font-semibold">{Math.min(filteredAlumni.length, visibleCount)}</span> of{" "}
               <span className="text-slate-900 dark:text-white font-semibold">{filteredAlumni.length}</span> matching profiles.
             </div>
@@ -203,7 +203,7 @@ export default function DirectoryPage() {
                             <h4 className="font-display font-bold text-slate-900 dark:text-white text-base group-hover:text-srm-yellow transition-colors duration-200">
                               {alumni.name}
                             </h4>
-                            <div className="flex items-center gap-1.5 text-slate-500 dark:text-slate-400 text-xs mt-0.5">
+                            <div className="flex items-center gap-1.5 text-slate-600 dark:text-slate-400 text-xs mt-0.5">
                               <GraduationCap className="h-3.5 w-3.5" />
                               <span>Class of {alumni.batch}</span>
                             </div>
@@ -211,11 +211,11 @@ export default function DirectoryPage() {
                         </div>
 
                         {/* Profession */}
-                        <div className="mt-4 pt-3 border-t border-slate-200 dark:border-slate-900/60 flex items-start gap-2.5 text-sm text-slate-600 dark:text-slate-300">
+                        <div className="mt-4 pt-3 border-t border-slate-200 dark:border-slate-900/60 flex items-start gap-2.5 text-sm text-slate-600 dark:text-slate-400">
                           <Briefcase className="h-4 w-4 text-slate-400 mt-0.5 shrink-0" />
                           <div className="flex flex-col">
-                            <span className="font-semibold text-slate-900 dark:text-slate-100 leading-tight">{alumni.role}</span>
-                            <span className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{alumni.company}</span>
+                            <span className="font-semibold text-slate-600 dark:text-slate-400 leading-tight">{alumni.role}</span>
+                            <span className="text-xs text-slate-600 dark:text-slate-400 mt-0.5">{alumni.company}</span>
                           </div>
                         </div>
                       </div>
@@ -226,12 +226,12 @@ export default function DirectoryPage() {
                           <div className="h-6 w-6 rounded bg-srm-yellow/10 border border-srm-yellow/20 text-srm-yellow text-[10px] font-bold font-display flex items-center justify-center uppercase">
                             {alumni.companyLogoText.slice(0, 3)}
                           </div>
-                          <span className="text-[11px] text-slate-550 dark:text-slate-400 font-medium">{alumni.city}</span>
+                          <span className="text-[11px] text-slate-600 dark:text-slate-400 font-medium">{alumni.city}</span>
                         </div>
 
                         <div className="flex items-center gap-3">
                           {alumni.featured && (
-                            <span className="bg-srm-yellow/10 border border-srm-yellow/20 text-[10px] text-srm-yellow/90 font-bold uppercase tracking-wider rounded-md px-1.5 py-0.5 animate-pulse">
+                            <span className="bg-amber-500/10 border border-amber-500/20 text-[10px] text-[#E5A93C] font-bold uppercase tracking-wider rounded-md px-1.5 py-0.5 animate-pulse">
                               Featured
                             </span>
                           )}

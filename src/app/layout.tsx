@@ -38,7 +38,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-navy-950 text-slate-200 font-sans selection:bg-[#E5A93C]/20 selection:text-[#E5A93C]">
+      <body className="min-h-full flex flex-col bg-navy-950 text-slate-800 dark:text-slate-200 font-sans selection:bg-[#E5A93C]/20 selection:text-[#E5A93C]">
         <Navbar />
         <main className="flex-1 flex flex-col">
           {children}

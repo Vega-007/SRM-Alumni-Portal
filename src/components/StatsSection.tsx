@@ -72,7 +72,7 @@ export default function StatsSection() {
         
         {/* Header */}
         <div className="max-w-2xl mb-16">
-          <h2 className="font-display text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50 sm:text-4xl">
+          <h2 className="font-display text-3xl font-extrabold tracking-tight text-slate-950 dark:text-slate-50 sm:text-4xl">
             A Legacy of <span className="text-transparent bg-clip-text bg-gradient-to-r from-srm-yellow via-[#E5A93C] to-gold-600">Unmatched Success</span>
           </h2>
           <p className="mt-4 text-base text-slate-600 dark:text-slate-400 leading-relaxed">
@@ -92,12 +92,12 @@ export default function StatsSection() {
                   <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-250 dark:border-slate-800 text-srm-yellow group-hover:border-srm-yellow/20 transition-colors">
                     <Users className="h-5 w-5" />
                   </div>
-                  <span className="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                  <span className="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
                     Total Alumni Network
                   </span>
                 </div>
                 
-                <div className="flex items-baseline text-5xl font-black text-slate-900 dark:text-slate-50">
+                <div className="flex items-baseline text-5xl font-black text-[#E5A93C]">
                   <CountUpTicker value="15,000+" />
                 </div>
                 
@@ -128,12 +128,12 @@ export default function StatsSection() {
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-250 dark:border-slate-800 text-srm-red group-hover:border-srm-red/20 transition-colors">
                   <Award className="h-5 w-5" />
                 </div>
-                <span className="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                <span className="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
                   Highest package
                 </span>
               </div>
               
-              <div className="flex items-baseline text-5xl font-black text-slate-900 dark:text-slate-50">
+              <div className="flex items-baseline text-5xl font-black text-[#E5A93C]">
                 <CountUpTicker value="₹42.5 LPA" />
               </div>
               
@@ -151,12 +151,12 @@ export default function StatsSection() {
                   <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-250 dark:border-slate-800 text-srm-yellow group-hover:border-srm-yellow/20 transition-colors">
                     <Building2 className="h-5 w-5" />
                   </div>
-                  <span className="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                  <span className="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
                     Partner recruiters
                   </span>
                 </div>
                 
-                <div className="flex items-baseline text-5xl font-black text-slate-900 dark:text-slate-50">
+                <div className="flex items-baseline text-5xl font-black text-[#E5A93C]">
                   <CountUpTicker value="500+" />
                 </div>
                 
@@ -194,7 +194,7 @@ export default function StatsSection() {
                   </span>
                 </div>
                 
-                <div className="flex items-baseline text-5xl font-black text-slate-900 dark:text-slate-50">
+                <div className="flex items-baseline text-5xl font-black text-[#E5A93C]">
                   <CountUpTicker value="98.2%" />
                 </div>
                 
