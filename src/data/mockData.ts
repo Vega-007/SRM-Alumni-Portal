@@ -357,3 +357,53 @@ export const MOCK_MAP_HUBS: MapHub[] = [
     topCompanies: ["Atlassian", "Qualcomm", "Canva", "Macquarie"]
   }
 ];
+
+export interface AlumniEvent {
+  id: string;
+  title: string;
+  date: string;
+  time: string;
+  location: string;
+  description: string;
+  imageUrl: string;
+}
+
+export const MOCK_EVENTS: AlumniEvent[] = [
+  {
+    id: "e1",
+    title: "Annual Grand Alumni Meet 2026",
+    date: "Dec 18, 2026",
+    time: "17:00 IST",
+    location: "SRM Ramapuram Campus Lawn, Chennai",
+    description: "Reconnect with old classmates, expand your network, and meet current leadership at our flagship yearly gathering. Includes gala dinner and campus tours.",
+    imageUrl: "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=600&auto=format&fit=crop"
+  },
+  {
+    id: "e2",
+    title: "Generative AI Industry Panel",
+    date: "Oct 24, 2026",
+    time: "19:00 IST",
+    location: "Virtual Panel (Zoom / YouTube Live)",
+    description: "Alumni engineering leaders at OpenAI, Microsoft, and Google share insights on building with LLMs, prompt systems, and pivoting your career into AI.",
+    imageUrl: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=600&auto=format&fit=crop"
+  },
+  {
+    id: "e3",
+    title: "KTR Tech Innovation Summit",
+    date: "Nov 08, 2026",
+    time: "09:30 IST",
+    location: "Kattankulathur Campus Auditorium",
+    description: "An interactive, multi-campus research expo featuring student-led prototype demos, VC pitch stands, and keynotes by distinguished alumni founders.",
+    imageUrl: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=600&auto=format&fit=crop"
+  },
+  {
+    id: "e4",
+    title: "Global Startup Pitch Night",
+    date: "Jan 12, 2027",
+    time: "21:00 IST",
+    location: "Virtual Webcast (India-US Collaboration)",
+    description: "Watch alumni-led startups pitch live to early-stage venture capital firms. Ideal for founders seeking seed checks and strategic mentorship.",
+    imageUrl: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&w=600&auto=format&fit=crop"
+  }
+];
+

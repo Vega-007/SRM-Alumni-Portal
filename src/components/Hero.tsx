@@ -4,12 +4,11 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { Search, UserPlus, Globe, Sparkles } from "lucide-react";
 import Link from "next/link";
-import UpdateInfoModal from "./UpdateInfoModal";
 import BackgroundBeams from "./BackgroundBeams";
 import { MOCK_MAP_HUBS } from "@/data/mockData";
 
 export default function Hero() {
-  const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
+
   const [hoveredHub, setHoveredHub] = useState<string | null>(null);
 
   // Connection arcs between major hubs for animated SVG data packet paths
@@ -86,13 +85,13 @@ export default function Hero() {
                   <Search className="h-4.5 w-4.5" />
                   Explore Directory
                 </Link>
-                <button
-                  onClick={() => setIsUpdateModalOpen(true)}
-                  className="inline-flex items-center justify-center gap-2.5 rounded-xl border border-slate-200 dark:border-slate-800/60 bg-slate-100 dark:bg-slate-900/40 hover:bg-slate-200/80 dark:hover:bg-slate-900/85 hover:border-srm-red/30 py-4 px-8 text-sm font-bold text-slate-700 dark:text-slate-200 transition-all active:scale-[0.98] cursor-pointer"
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2.5 rounded-xl border border-slate-200/80 dark:border-slate-800/60 bg-slate-100 dark:bg-slate-900/40 hover:bg-slate-200/80 dark:hover:bg-slate-900/85 hover:border-srm-red/30 py-4 px-8 text-sm font-bold text-slate-700 dark:text-slate-200 transition-all active:scale-[0.98] cursor-pointer"
                 >
                   <UserPlus className="h-4.5 w-4.5 text-srm-yellow" />
                   Update Profile
-                </button>
+                </Link>
               </motion.div>
 
               {/* Mini Social proof */}
@@ -128,7 +127,7 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="lg:col-span-7 flex justify-center items-center relative z-10 w-full"
             >
-              <div className="relative w-full aspect-[2/1] max-w-[700px] border border-slate-200 dark:border-slate-800/60 bg-slate-100/30 dark:bg-slate-950/20 rounded-3xl p-4 md:p-6 backdrop-blur-sm shadow-inner dark:shadow-slate-950 overflow-hidden">
+              <div className="relative w-full aspect-[2/1] max-w-[700px] border border-slate-200/80 dark:border-slate-800/60 bg-white/60 dark:bg-slate-950/60 rounded-3xl p-4 md:p-6 backdrop-blur-md shadow-sm overflow-hidden">
                 
                 {/* SVG Map Canvas */}
                 <svg
@@ -326,8 +325,6 @@ export default function Hero() {
 
       </section>
 
-      {/* Profile Update Modal */}
-      <UpdateInfoModal isOpen={isUpdateModalOpen} onClose={() => setIsUpdateModalOpen(false)} />
     </>
   );
 }

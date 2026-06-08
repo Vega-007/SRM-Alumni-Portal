@@ -12,7 +12,7 @@ function AlumniCard({ alumni }: { alumni: Alumni }) {
   };
 
   return (
-    <div className="flex items-center gap-4 rounded-2xl border border-slate-200 dark:border-slate-800/60 bg-slate-100/60 dark:bg-slate-950/60 p-4 min-w-[290px] max-w-[320px] transition-all duration-300 hover:scale-105 hover:border-srm-yellow/50 hover:shadow-2xl hover:shadow-srm-yellow/5 select-none shrink-0 group">
+    <div className="flex items-center gap-4 rounded-2xl bg-slate-100/40 dark:bg-slate-900/40 border border-slate-200/60 dark:border-slate-800/60 backdrop-blur-md p-4 min-w-[290px] max-w-[320px] transition-all duration-300 hover:scale-105 hover:border-srm-yellow/50 select-none shrink-0 group">
       
       {/* Profile Photo Thumbnail */}
       <div className="h-11 w-11 rounded-full overflow-hidden shrink-0 border-2 border-slate-200 dark:border-slate-900 group-hover:border-srm-yellow/30 transition-colors">
@@ -96,8 +96,8 @@ export default function FeaturedAlumni() {
         <div className="w-full overflow-hidden relative mt-12 py-4 select-none">
           
           {/* Smooth Side Vignettes for Infinite Scroll Fade effect */}
-          <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-navy-950 to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-navy-950 to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white via-white/70 to-transparent pointer-events-none z-10 dark:from-slate-950 dark:via-slate-950/70" />
+          <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white via-white/70 to-transparent pointer-events-none z-10 dark:from-slate-950 dark:via-slate-950/70" />
 
           {/* Marquee Track Container */}
           <div className="flex w-full overflow-hidden">

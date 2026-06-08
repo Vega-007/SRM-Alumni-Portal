@@ -221,7 +221,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="mx-auto w-full max-w-7xl px-6 py-12 md:py-20 md:px-8">
+    <div className="mx-auto w-full max-w-7xl px-6 py-12 md:py-20 md:px-8 overflow-x-hidden">
       {/* Title Header */}
       <div className="mb-12 text-center md:mb-16">
         <h1 className="font-display text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50 md:text-5xl">
@@ -239,7 +239,7 @@ export default function ContactPage() {
         <div className="lg:col-span-5 space-y-8">
           
           {/* Institutional Info Card */}
-          <div className="rounded-2xl border border-slate-200 dark:border-slate-800/60 bg-white dark:bg-slate-900/60 p-6 md:p-8 backdrop-blur-md shadow-sm">
+          <div className="rounded-2xl border border-slate-200/80 dark:border-slate-800/60 bg-white/60 dark:bg-slate-950/60 backdrop-blur-md p-6 md:p-8 shadow-sm">
             <h2 className="font-display text-xl font-bold text-slate-900 dark:text-slate-50 mb-6 flex items-center gap-2">
               <span className="h-2 w-2 rounded-full bg-srm-red" />
               Institutional Directory
@@ -306,7 +306,7 @@ export default function ContactPage() {
           </div>
 
           {/* Styled Campus Map Container */}
-          <div className="rounded-2xl border border-slate-200 dark:border-slate-800/60 bg-white dark:bg-slate-900/60 p-4 shadow-sm overflow-hidden">
+          <div className="rounded-2xl border border-slate-200/80 dark:border-slate-800/60 bg-white/60 dark:bg-slate-950/60 backdrop-blur-md p-4 shadow-sm overflow-hidden">
             <div className="relative h-64 w-full rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-950">
               <iframe
                 title="SRMIST Ramapuram Campus Map"
@@ -331,7 +331,7 @@ export default function ContactPage() {
         {/* Right Column - Profile Update & Contact Form */}
         <div className="lg:col-span-7">
           
-          <div className="rounded-2xl border border-slate-200 dark:border-slate-800/60 bg-white dark:bg-slate-900/60 p-6 md:p-8 backdrop-blur-md shadow-sm relative">
+          <div className="rounded-2xl border border-slate-200/80 dark:border-slate-800/60 bg-white/60 dark:bg-slate-950/60 backdrop-blur-md p-6 md:p-8 shadow-sm relative">
             
             {/* Form Success View */}
             {submitSuccess ? (

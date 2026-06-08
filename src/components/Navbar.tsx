@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Menu, X, ShieldAlert, Sun, Moon } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import AdminLoginModal from "./AdminLoginModal";
 
 export default function Navbar() {
@@ -11,8 +12,10 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isAdminModalOpen, setIsAdminModalOpen] = useState(false);
   const [theme, setTheme] = useState<"dark" | "light">("dark");
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     try {
       const savedTheme = localStorage.getItem("theme") as "dark" | "light" | null;
       const initialTheme = savedTheme || (document.documentElement.classList.contains("dark") ? "dark" : "light");
@@ -41,6 +44,7 @@ export default function Navbar() {
   const navLinks = [
     { label: "Home", href: "/" },
     { label: "Alumni Directory", href: "/directory" },
+    { label: "Events", href: "/events" },
     { label: "Success Stories", href: "/success-stories" },
     { label: "Contact", href: "/contact" }
   ];
@@ -99,9 +103,11 @@ export default function Navbar() {
               onClick={toggleTheme}
               className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-srm-blue border border-white/20 hover:bg-srm-blue/80 hover:border-srm-yellow text-slate-200 hover:text-white transition-all duration-200 cursor-pointer shadow-sm"
               aria-label="Toggle theme"
-              title={theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"}
+              title={mounted && theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"}
             >
-              {theme === "dark" ? (
+              {!mounted ? (
+                <div className="h-5 w-5" />
+              ) : theme === "dark" ? (
                 <Sun className="h-5 w-5 text-srm-yellow hover:scale-110 transition-transform duration-200" />
               ) : (
                 <Moon className="h-5 w-5 text-srm-yellow hover:scale-110 transition-transform duration-200" />
@@ -123,7 +129,9 @@ export default function Navbar() {
               className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/20 text-slate-200 hover:bg-srm-blue/80 hover:text-white transition-colors"
               aria-label="Toggle theme"
             >
-              {theme === "dark" ? (
+              {!mounted ? (
+                <div className="h-5 w-5" />
+              ) : theme === "dark" ? (
                 <Sun className="h-5 w-5 text-srm-yellow" />
               ) : (
                 <Moon className="h-5 w-5 text-srm-yellow" />
@@ -139,38 +147,80 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Navigation Drawer */}
-        {isMobileMenuOpen && (
-          <div className="border-b border-white/10 bg-srm-blue px-6 py-6 md:hidden">
-            <nav className="flex flex-col gap-4">
-              {navLinks.map((link) => {
-                const isActive = pathname === link.href;
-                return (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className={`text-base font-semibold tracking-wide py-2 transition-colors ${
-                      isActive ? "text-srm-yellow" : "text-slate-200 hover:text-srm-yellow"
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                );
-              })}
-              <button
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  setIsAdminModalOpen(true);
-                }}
-                className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-srm-blue/80 border border-white/20 py-3 text-sm font-semibold text-slate-200 transition-all active:scale-[0.98] hover:text-srm-yellow"
+        {/* Mobile Navigation Drawer Overlay */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <>
+              {/* Backdrop Overlay */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-sm md:hidden"
+              />
+
+              {/* Sliding Panel */}
+              <motion.div
+                initial={{ x: "100%" }}
+                animate={{ x: 0 }}
+                exit={{ x: "100%" }}
+                transition={{ type: "tween", duration: 0.25 }}
+                className="fixed top-0 right-0 bottom-0 z-50 w-full max-w-[280px] bg-srm-blue p-6 shadow-2xl flex flex-col justify-between md:hidden text-white"
               >
-                <ShieldAlert className="h-4 w-4 text-srm-yellow" />
-                Admin Portal
-              </button>
-            </nav>
-          </div>
-        )}
+                <div>
+                  {/* Close Header */}
+                  <div className="flex items-center justify-between mb-8 pb-4 border-b border-white/10">
+                    <span className="font-display font-extrabold text-sm tracking-widest text-srm-yellow">SRM ALUMNI</span>
+                    <button
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="p-1 rounded-lg border border-white/10 text-slate-200 hover:text-white"
+                      aria-label="Close menu"
+                    >
+                      <X className="h-5 w-5" />
+                    </button>
+                  </div>
+
+                  {/* Navigation Links */}
+                  <nav className="flex flex-col gap-4">
+                    {navLinks.map((link) => {
+                      const isActive = pathname === link.href;
+                      return (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className={`text-base font-semibold tracking-wide py-2 transition-colors flex items-center justify-between ${
+                            isActive ? "text-srm-yellow border-b border-srm-yellow/20" : "text-slate-200 hover:text-srm-yellow"
+                          }`}
+                        >
+                          {link.label}
+                        </Link>
+                      );
+                    })}
+                  </nav>
+                </div>
+
+                {/* Footer Controls */}
+                <div className="space-y-4">
+                  <button
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      setIsAdminModalOpen(true);
+                    }}
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-srm-blue/80 border border-white/20 py-3 text-sm font-semibold text-slate-200 transition-all active:scale-[0.98] hover:text-srm-yellow"
+                  >
+                    <ShieldAlert className="h-4 w-4 text-srm-yellow" />
+                    Admin Portal
+                  </button>
+                  <p className="text-[10px] text-slate-450 text-center uppercase tracking-widest">
+                    Ramapuram Campus
+                  </p>
+                </div>
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>
       </header>
 
       {/* Admin Login Modal Overlay */}

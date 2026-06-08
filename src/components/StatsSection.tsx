@@ -23,7 +23,7 @@ function BentoCard({ children, className = "" }: { children: React.ReactNode; cl
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`relative overflow-hidden rounded-3xl border border-slate-200 dark:border-slate-800/60 bg-slate-100/40 dark:bg-slate-950/40 backdrop-blur-sm p-8 flex flex-col justify-between transition-all duration-300 hover:border-crimson-500/20 group hover:shadow-2xl hover:shadow-crimson-950/10 ${className}`}
+      className={`relative overflow-hidden rounded-3xl border border-slate-200/80 dark:border-slate-800/60 bg-white/60 dark:bg-slate-950/60 backdrop-blur-md p-8 flex flex-col justify-between transition-all duration-300 hover:border-crimson-500/20 group hover:shadow-2xl hover:shadow-crimson-950/10 ${className}`}
     >
       {/* Spotlight Radial Background Glow */}
       {isHovered && (
@@ -204,7 +204,7 @@ export default function StatsSection() {
               </div>
 
               {/* SVG Glowing Line Chart Visualizer */}
-              <div ref={chartRef} className="flex-1 max-w-[280px] h-[100px] border border-slate-200 dark:border-slate-800 bg-slate-100/85 dark:bg-slate-950/60 rounded-2xl p-4 flex items-center justify-center relative shadow-inner overflow-hidden">
+              <div ref={chartRef} className="flex-1 max-w-[280px] h-[100px] border border-slate-200/80 dark:border-slate-800/60 bg-white/60 dark:bg-slate-950/60 rounded-2xl p-4 flex items-center justify-center relative shadow-inner overflow-hidden">
                 <svg viewBox="0 0 200 80" className="w-full h-full">
                   <defs>
                     <linearGradient id="chartGradient" x1="0%" y1="0%" x2="0%" y2="100%">

@@ -5,6 +5,7 @@ import Hero from "@/components/Hero";
 import CompanyMarquee from "@/components/CompanyMarquee";
 import StatsSection from "@/components/StatsSection";
 import FeaturedAlumni from "@/components/FeaturedAlumni";
+import UpcomingEvents from "@/components/UpcomingEvents";
 
 export default function Home() {
   return (
@@ -12,7 +13,7 @@ export default function Home() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="w-full min-h-screen bg-transparent flex flex-col"
+      className="w-full min-h-screen bg-transparent flex flex-col overflow-x-hidden"
     >
       {/* 1. Hero Landing Section */}
       <Hero />
@@ -25,6 +26,9 @@ export default function Home() {
 
       {/* 4. Highlighted alumni spotlights */}
       <FeaturedAlumni />
+
+      {/* 5. Upcoming university & alumni events */}
+      <UpcomingEvents limit={4} />
     </motion.div>
   );
 }

@@ -14,7 +14,7 @@ export default function SuccessStoriesPage() {
   };
 
   return (
-    <div className="w-full min-h-screen bg-transparent py-12 px-6 md:px-8">
+    <div className="w-full min-h-screen bg-transparent py-12 px-6 md:px-8 overflow-x-hidden">
       <div className="mx-auto max-w-7xl">
         
         {/* Page Header */}
@@ -29,7 +29,7 @@ export default function SuccessStoriesPage() {
 
         {/* SECTION 1: INTERACTIVE GLOBAL ALUMNI MAP */}
         <section className="mb-20">
-          <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-100/30 dark:bg-slate-900/10 p-6 md:p-8 glass-panel relative overflow-hidden">
+          <div className="rounded-3xl border border-slate-200/80 dark:border-slate-800/60 bg-white/60 dark:bg-slate-950/60 backdrop-blur-md p-6 md:p-8 relative overflow-hidden shadow-sm">
             {/* Corner Glow */}
             <div className="absolute top-0 right-0 h-40 w-40 bg-srm-yellow/5 blur-3xl pointer-events-none" />
             
@@ -104,7 +104,7 @@ export default function SuccessStoriesPage() {
                         initial={{ opacity: 0, y: 10, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                        className="absolute bottom-6 left-1/2 -translate-x-1/2 w-52 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-950 p-4 shadow-2xl z-30 pointer-events-none"
+                        className="absolute bottom-6 left-1/2 -translate-x-1/2 w-52 rounded-xl border border-slate-200/80 dark:border-slate-800/60 bg-white/95 dark:bg-slate-950/95 backdrop-blur-md p-4 shadow-2xl z-30 pointer-events-none"
                       >
                         <h4 className="font-display font-bold text-slate-900 dark:text-white text-xs tracking-tight">
                           {hub.name}
@@ -161,7 +161,7 @@ export default function SuccessStoriesPage() {
               return (
                 <div
                   key={story.id}
-                  className="rounded-3xl border border-slate-200 dark:border-slate-900 bg-slate-100/50 dark:bg-slate-900/10 p-6 md:p-8 glass-panel relative overflow-hidden transition-all duration-300 hover:border-srm-yellow/10"
+                  className="rounded-3xl border border-slate-200/80 dark:border-slate-800/60 bg-white/60 dark:bg-slate-950/60 backdrop-blur-md p-6 md:p-8 relative overflow-hidden transition-all duration-300 hover:border-srm-yellow/20 hover:shadow-xl hover:shadow-srm-yellow/5"
                 >
                   {/* Glowing line overlay */}
                   <div className="absolute top-0 left-0 bottom-0 w-1.5 bg-gradient-to-b from-srm-yellow to-[#E5A93C]" />

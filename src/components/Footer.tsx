@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useState } from "react";
 import { GraduationCap, ArrowUpRight, Send } from "lucide-react";
-import UpdateInfoModal from "./UpdateInfoModal";
 
 // Custom inline SVG icons for brand logos
 const InstagramIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -36,7 +35,7 @@ const YoutubeIcon = (props: React.SVGProps<SVGSVGElement>) => (
 );
 
 export default function Footer() {
-  const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
+
   const [emailInput, setEmailInput] = useState("");
   const [newsletterSubscribed, setNewsletterSubscribed] = useState(false);
 
@@ -145,12 +144,12 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <button
-                    onClick={() => setIsUpdateModalOpen(true)}
+                  <Link
+                    href="/contact"
                     className="hover:text-srm-yellow transition-colors text-left font-medium text-srm-red dark:text-srm-yellow hover:underline cursor-pointer"
                   >
                     Update Information Form
-                  </button>
+                  </Link>
                 </li>
                 <li>
                   <a href="#" className="hover:text-srm-yellow transition-colors">
@@ -192,12 +191,12 @@ export default function Footer() {
                 </form>
               )}
               <div className="pt-4">
-                <button
-                  onClick={() => setIsUpdateModalOpen(true)}
+                <Link
+                  href="/contact"
                   className="w-full inline-flex justify-center items-center gap-2 rounded-lg bg-slate-100 hover:bg-slate-200/80 dark:bg-slate-900/60 dark:hover:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-srm-yellow/30 py-2 px-4 text-xs font-semibold text-slate-700 dark:text-slate-200 transition-all hover:text-slate-900 dark:hover:text-white cursor-pointer"
                 >
                   Change Email / Contact details
-                </button>
+                </Link>
               </div>
             </div>
             
@@ -215,8 +214,6 @@ export default function Footer() {
         </div>
       </footer>
 
-      {/* Update Info Modal Overlay */}
-      <UpdateInfoModal isOpen={isUpdateModalOpen} onClose={() => setIsUpdateModalOpen(false)} />
     </>
   );
 }
