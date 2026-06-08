@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+  
+  /* SRM brand theme colors */
+  --color-srm-blue: #004684;
+  --color-srm-yellow: #FFD200;
+  --color-srm-red: #8B1E0F;
+  --color-srm-lightBlue: #1A73E8;
+
+  --color-navy-950: var(--navy-950);
+  --color-navy-900: var(--navy-900);
+  --color-navy-800: var(--navy-800);
+  --color-navy-700: var(--navy-700);
+  --color-navy-600: #3b82f6;
+  --color-gold-400: #f1c571;
+  --color-gold-500: #E5A93C;
+  --color-gold-600: #c28828;
+  
+  --color-crimson-400: #c22929;
+  --color-crimson-500: #A31D1D;
+  --color-crimson-600: #851515;
+  --color-crimson-700: #680c0c;
+  
+  --animate-infinite-scroll: infinite-scroll 45s linear infinite;
+}
+ 
+:root {
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --font-inter: 'Inter', sans-serif;
+  --font-outfit: 'Outfit', sans-serif;
+
+  --navy-950: #ffffff;
+  --navy-900: #f8fafc;
+  --navy-800: #e2e8f0;
+  --navy-700: #cbd5e1;
+}
+
+.dark {
+  --background: #050c1a;
+  --foreground: #f8fafc;
+
+  --navy-950: #050c1a;
+  --navy-900: #0a192f;
+  --navy-800: #112240;
+  --navy-700: #233554;
+}
+
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter);
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(10, 25, 47, 0.03) 0px, transparent 50%),
+    radial-gradient(at 50% 0%, rgba(246, 179, 8, 0.01) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(10, 25, 47, 0.02) 0px, transparent 50%);
+  background-attachment: fixed;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.dark body {
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(10, 25, 47, 0.3) 0px, transparent 50%),
+    radial-gradient(at 50% 0%, rgba(246, 179, 8, 0.03) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(10, 25, 47, 0.2) 0px, transparent 50%);
+}
+
+/* Glassmorphism custom card utility */
+.glass-panel {
+  background: rgba(10, 25, 47, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-hover:hover {
+  border-color: rgba(250, 204, 21, 0.3);
+  box-shadow: 0 0 25px rgba(250, 204, 21, 0.04);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #020617;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #112240;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #233554;
+}
+
+/* Custom Keyframes for Infinite Logo Scroller */
+@keyframes infinite-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
