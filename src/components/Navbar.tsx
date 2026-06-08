@@ -56,25 +56,11 @@ export default function Navbar() {
           
           {/* Logo Container featuring Official SRMIST seal & typography */}
           <Link href="/" className="flex items-center gap-3 group select-none">
-            <svg viewBox="0 0 240 55" className="h-14 w-auto fill-none transition-transform duration-300 group-hover:scale-[1.02]" xmlns="http://www.w3.org/2000/svg">
-              {/* Circular SRMIST seal */}
-              <circle cx="28" cy="27" r="24" fill="#004684" stroke="#FFD200" strokeWidth="1.5" />
-              <circle cx="28" cy="27" r="20" fill="#0b1e36" />
-              
-              {/* Seal Book representation */}
-              <path d="M19 31 C22 34, 25 32, 28 34 C31 32, 34 34, 37 31" stroke="#FFD200" strokeWidth="1.5" fill="none" />
-              {/* Flame representing learning */}
-              <path d="M28 12 L28 26" stroke="#FFD200" strokeWidth="1.5" />
-              <circle cx="28" cy="11" r="2" fill="#FFD200" />
-              
-              {/* Star-like learning beams */}
-              <path d="M21 16 L23 18 M35 16 L33 18 M17 23 L20 23 M39 23 L36 23" stroke="#FFD200" strokeWidth="1" />
-
-              {/* Official SRMIST typography layout */}
-              <text x="60" y="21" className="fill-white font-serif font-black text-2xl tracking-tighter">SRM</text>
-              <text x="60" y="32" className="fill-slate-200 font-sans font-bold text-[8px] tracking-[0.03em] uppercase">Institute of Science & Tech</text>
-              <text x="60" y="42" className="fill-srm-yellow font-sans font-extrabold text-[9px] tracking-[0.06em] uppercase">RAMAPURAM CAMPUS</text>
-            </svg>
+            <img 
+              src="/srm-logo.png" 
+              alt="SRM Institute of Science and Technology" 
+              className="h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+            />
           </Link>
 
           {/* Desktop Nav Links */}

@@ -6,6 +6,7 @@ import { Search, UserPlus, Globe, Sparkles } from "lucide-react";
 import Link from "next/link";
 import BackgroundBeams from "./BackgroundBeams";
 import { MOCK_MAP_HUBS } from "@/data/mockData";
+import { ErrorBoundary } from "./ErrorBoundary";
 
 export default function Hero() {
 
@@ -13,13 +14,13 @@ export default function Hero() {
 
   // Connection arcs between major hubs for animated SVG data packet paths
   const connectionArcs = [
-    { from: "Bengaluru", to: "San Francisco", d: "M 720 290 Q 435 100 150 175", duration: 4.5 },
-    { from: "Bengaluru", to: "London", d: "M 720 290 Q 600 180 480 140", duration: 3.5 },
-    { from: "Bengaluru", to: "Singapore", d: "M 720 290 Q 750 305 780 320", duration: 2 },
-    { from: "San Francisco", to: "Seattle", d: "M 150 175 Q 160 150 170 125", duration: 1.8 },
-    { from: "Seattle", to: "Tokyo", d: "M 170 125 Q 515 60 860 190", duration: 5 },
-    { from: "Singapore", to: "Sydney", d: "M 780 320 Q 860 345 900 410", duration: 3.2 },
-    { from: "London", to: "San Francisco", d: "M 480 140 Q 315 80 150 175", duration: 4 },
+    { from: "Chennai", to: "San Francisco", d: "M 515 298 Q 722 100 930 175", duration: 4.5 },
+    { from: "Chennai", to: "London", d: "M 515 298 Q 387 180 260 140", duration: 3.5 },
+    { from: "Chennai", to: "Bengaluru", d: "M 515 298 Q 507 294 500 290", duration: 1.5 },
+    { from: "Chennai", to: "Singapore", d: "M 515 298 Q 537 309 560 320", duration: 2 },
+    { from: "Chennai", to: "Tokyo", d: "M 515 298 Q 577 190 640 190", duration: 3.8 },
+    { from: "Chennai", to: "Sydney", d: "M 515 298 Q 597 354 680 410", duration: 4 },
+    { from: "Chennai", to: "Seattle", d: "M 515 298 Q 732 100 950 125", duration: 4.8 },
   ];
 
   return (
@@ -130,173 +131,187 @@ export default function Hero() {
               <div className="relative w-full aspect-[2/1] max-w-[700px] border border-slate-200/80 dark:border-slate-800/60 bg-white/60 dark:bg-slate-950/60 rounded-3xl p-4 md:p-6 backdrop-blur-md shadow-sm overflow-hidden">
                 
                 {/* SVG Map Canvas */}
-                <svg
-                  viewBox="0 0 1000 500"
-                  className="w-full h-full relative"
-                >
-                  <defs>
-                    {/* Gradients */}
-                    <radialGradient id="mapGlow" cx="50%" cy="50%" r="50%">
-                      <stop offset="0%" stopColor="#A31D1D" stopOpacity="0.08" />
-                      <stop offset="100%" stopColor="#050c1a" stopOpacity="0" />
-                    </radialGradient>
-                    <linearGradient id="arcGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#A31D1D" stopOpacity="0.8" />
-                      <stop offset="50%" stopColor="#E5A93C" stopOpacity="0.8" />
-                      <stop offset="100%" stopColor="#A31D1D" stopOpacity="0.8" />
-                    </linearGradient>
-                  </defs>
+                <ErrorBoundary>
+                  <svg
+                    viewBox="0 0 1000 500"
+                    className="w-full h-full relative"
+                  >
+                    <defs>
+                      {/* Gradients */}
+                      <radialGradient id="mapGlow" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stopColor="#8B1E0F" stopOpacity="0.08" />
+                        <stop offset="100%" stopColor="#050c1a" stopOpacity="0" />
+                      </radialGradient>
+                      <linearGradient id="arcGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#8B1E0F" stopOpacity="0.8" />
+                        <stop offset="50%" stopColor="#E5A93C" stopOpacity="0.8" />
+                        <stop offset="100%" stopColor="#8B1E0F" stopOpacity="0.8" />
+                      </linearGradient>
+                    </defs>
 
-                  {/* Dynamic central background glow */}
-                  <circle cx="500" cy="250" r="300" fill="url(#mapGlow)" />
+                    {/* Dynamic central background glow */}
+                    <circle cx="500" cy="250" r="300" fill="url(#mapGlow)" />
 
-                  {/* Stylized geometric continent paths */}
-                  <g className="fill-slate-900/40 stroke-slate-800/50" strokeWidth="1.5">
-                    {/* Greenland */}
-                    <path d="M 220 50 L 280 40 L 260 75 L 210 70 Z" />
-                    {/* North America */}
-                    <path d="M 80 120 L 120 100 L 160 80 L 220 80 L 260 90 L 300 120 L 260 180 L 200 190 L 180 200 L 160 210 L 140 240 L 150 280 L 130 280 L 120 250 L 90 200 L 70 170 Z" />
-                    {/* South America */}
-                    <path d="M 130 280 L 160 290 L 180 320 L 190 360 L 170 420 L 150 450 L 140 440 L 120 380 L 115 320 Z" />
-                    {/* Iceland */}
-                    <path d="M 390 85 L 410 80 L 405 95 Z" />
-                    {/* Africa */}
-                    <path d="M 430 230 L 480 220 L 520 225 L 560 250 L 550 290 L 510 370 L 490 400 L 475 410 L 465 390 L 460 320 L 420 295 L 415 260 Z" strokeLinejoin="round" />
-                    {/* Madagascar */}
-                    <path d="M 545 360 L 555 350 L 550 380 Z" />
-                    {/* Eurasia (Europe + Asia) */}
-                    <path d="M 370 120 L 430 110 L 520 90 L 600 70 L 700 60 L 800 65 L 880 75 L 940 100 L 950 120 L 910 170 L 870 185 L 860 210 L 830 220 L 810 270 L 780 300 L 760 280 L 720 300 L 680 260 L 630 245 L 590 255 L 560 180 L 500 185 L 430 170 Z" strokeLinejoin="round" />
-                    {/* Japan */}
-                    <path d="M 870 160 L 880 150 L 885 180 L 875 190 Z" />
-                    {/* Australia */}
-                    <path d="M 820 380 L 880 375 L 920 400 L 905 445 L 845 440 L 815 410 Z" />
-                    {/* New Zealand */}
-                    <path d="M 940 450 L 950 445 L 945 470 Z" />
-                  </g>
-
-                  {/* Connectivity arcs (glowing dotted paths + running light pulses) */}
-                  {connectionArcs.map((arc, index) => (
-                    <g key={index}>
-                      {/* Underlay path */}
-                      <path
-                        d={arc.d}
-                        fill="none"
-                        stroke="rgba(229, 169, 60, 0.08)"
-                        strokeWidth="1.5"
-                      />
-                      
-                      {/* Dotted travel path */}
-                      <path
-                        d={arc.d}
-                        fill="none"
-                        stroke="rgba(163, 29, 29, 0.25)"
-                        strokeWidth="1.5"
-                        strokeDasharray="4 6"
-                      />
-                      
-                      {/* Animated traveling data packet */}
-                      <motion.path
-                        d={arc.d}
-                        fill="none"
-                        stroke="url(#arcGradient)"
-                        strokeWidth="2.5"
-                        strokeDasharray="12 250"
-                        animate={{ strokeDashoffset: [0, -300] }}
-                        transition={{
-                          duration: arc.duration,
-                          repeat: Infinity,
-                          ease: "linear",
-                        }}
-                      />
+                    {/* Stylized geometric continent paths - centered on India */}
+                    <g className="fill-slate-200/70 dark:fill-slate-800/50 stroke-slate-300 dark:stroke-slate-700/80 transition-colors duration-500" strokeWidth="1.5">
+                      {/* Greenland */}
+                      <path d="M 0 50 L 60 40 L 40 75 L 0 70 Z" className="hover:fill-slate-300/80 dark:hover:fill-slate-700/60 transition-colors duration-200 cursor-pointer" />
+                      {/* North America Split */}
+                      <path d="M 860 120 L 900 100 L 940 80 L 1000 80 L 1000 185 L 980 190 L 960 200 L 940 210 L 920 240 L 930 280 L 910 280 L 900 250 L 870 200 L 850 170 Z" className="hover:fill-slate-300/80 dark:hover:fill-slate-700/60 transition-colors duration-200 cursor-pointer" />
+                      <path d="M 0 80 L 40 90 L 80 120 L 40 180 L 0 185 Z" className="hover:fill-slate-300/80 dark:hover:fill-slate-700/60 transition-colors duration-200 cursor-pointer" />
+                      {/* South America */}
+                      <path d="M 910 280 L 940 290 L 960 320 L 970 360 L 950 420 L 930 450 L 920 440 L 900 380 L 895 320 Z" className="hover:fill-slate-300/80 dark:hover:fill-slate-700/60 transition-colors duration-200 cursor-pointer" />
+                      {/* Iceland */}
+                      <path d="M 170 85 L 190 80 L 185 95 Z" className="hover:fill-slate-300/80 dark:hover:fill-slate-700/60 transition-colors duration-200 cursor-pointer" />
+                      {/* Africa */}
+                      <path d="M 210 230 L 260 220 L 300 225 L 340 250 L 330 290 L 290 370 L 270 400 L 255 410 L 245 390 L 240 320 L 200 295 L 195 260 Z" className="hover:fill-slate-300/80 dark:hover:fill-slate-700/60 transition-colors duration-200 cursor-pointer" strokeLinejoin="round" />
+                      {/* Madagascar */}
+                      <path d="M 325 360 L 335 350 L 330 380 Z" className="hover:fill-slate-300/80 dark:hover:fill-slate-700/60 transition-colors duration-200 cursor-pointer" />
+                      {/* Eurasia */}
+                      <path d="M 150 120 L 210 110 L 300 90 L 380 70 L 480 60 L 580 65 L 660 75 L 720 100 L 730 120 L 690 170 L 650 185 L 640 210 L 610 220 L 590 270 L 560 300 L 540 280 L 500 300 L 460 260 L 410 245 L 370 255 L 340 180 L 280 185 L 210 170 Z" className="hover:fill-slate-300/80 dark:hover:fill-slate-700/60 transition-colors duration-200 cursor-pointer" strokeLinejoin="round" />
+                      {/* Japan */}
+                      <path d="M 650 160 L 660 150 L 665 180 L 655 190 Z" className="hover:fill-slate-300/80 dark:hover:fill-slate-700/60 transition-colors duration-200 cursor-pointer" />
+                      {/* Australia */}
+                      <path d="M 600 380 L 660 375 L 700 400 L 685 445 L 625 440 L 595 410 Z" className="hover:fill-slate-300/80 dark:hover:fill-slate-700/60 transition-colors duration-200 cursor-pointer" />
+                      {/* New Zealand */}
+                      <path d="M 720 450 L 730 445 L 725 470 Z" className="hover:fill-slate-300/80 dark:hover:fill-slate-700/60 transition-colors duration-200 cursor-pointer" />
                     </g>
-                  ))}
 
-                  {/* Active Hub Nodes with multi-ring radar pulses */}
-                  {MOCK_MAP_HUBS.map((hub) => {
-                    const cx = hub.coordinates.x * 10;
-                    const cy = hub.coordinates.y * 5;
-                    const isHovered = hoveredHub === hub.id;
-
-                    return (
-                      <g
-                        key={hub.id}
-                        onMouseEnter={() => setHoveredHub(hub.id)}
-                        onMouseLeave={() => setHoveredHub(null)}
-                        className="cursor-pointer"
-                      >
-                        {/* Radar Pulse 1 */}
-                        <circle
-                          cx={cx}
-                          cy={cy}
-                          r={18}
+                    {/* Connectivity arcs (glowing dotted paths + running light pulses) */}
+                    {connectionArcs.map((arc, index) => (
+                      <g key={index}>
+                        {/* Underlay path */}
+                        <path
+                          d={arc.d}
                           fill="none"
-                          stroke={isHovered ? "#A31D1D" : "#E5A93C"}
-                          strokeWidth="1"
-                          className="animate-ping"
-                          style={{
-                            transformOrigin: `${cx}px ${cy}px`,
-                            animationDuration: "3s"
-                          }}
-                        />
-
-                        {/* Radar Pulse 2 */}
-                        <circle
-                          cx={cx}
-                          cy={cy}
-                          r={10}
-                          fill="none"
-                          stroke={isHovered ? "#E5A93C" : "#A31D1D"}
+                          stroke="rgba(229, 169, 60, 0.08)"
                           strokeWidth="1.5"
-                          className="animate-pulse"
-                          style={{
-                            transformOrigin: `${cx}px ${cy}px`,
-                            animationDuration: "2s"
-                          }}
                         />
-
-                        {/* Core Node Center */}
-                        <circle
-                          cx={cx}
-                          cy={cy}
-                          r={5}
-                          fill={isHovered ? "#A31D1D" : "#E5A93C"}
-                          className="transition-colors duration-200"
+                        
+                        {/* Dotted travel path */}
+                        <path
+                          d={arc.d}
+                          fill="none"
+                          stroke="rgba(139, 30, 15, 0.25)"
+                          strokeWidth="1.5"
+                          strokeDasharray="4 6"
+                        />
+                        
+                        {/* Animated traveling data packet */}
+                        <motion.path
+                          d={arc.d}
+                          fill="none"
+                          stroke="url(#arcGradient)"
+                          strokeWidth="2.5"
+                          strokeDasharray="12 250"
+                          animate={{ strokeDashoffset: [0, -300] }}
+                          transition={{
+                            duration: arc.duration,
+                            repeat: Infinity,
+                            ease: "linear",
+                          }}
                         />
                       </g>
+                    ))}
+
+                    {/* Active Hub Nodes with multi-ring radar pulses */}
+                    {MOCK_MAP_HUBS.map((hub) => {
+                      const cx = hub.coordinates.x * 10;
+                      const cy = hub.coordinates.y * 5;
+                      const isHovered = hoveredHub === hub.id;
+                      const isPrimary = hub.isPrimary;
+
+                      return (
+                        <g
+                          key={hub.id}
+                          onMouseEnter={() => setHoveredHub(hub.id)}
+                          onMouseLeave={() => setHoveredHub(null)}
+                          className="cursor-pointer"
+                        >
+                          {/* Radar Pulse 1 */}
+                          <circle
+                            cx={cx}
+                            cy={cy}
+                            r={isPrimary ? 24 : 18}
+                            fill="none"
+                            stroke={isPrimary ? "#8B1E0F" : (isHovered ? "#8B1E0F" : "#E5A93C")}
+                            strokeWidth={isPrimary ? "1.5" : "1"}
+                            className="animate-ping"
+                            style={{
+                              transformOrigin: `${cx}px ${cy}px`,
+                              animationDuration: isPrimary ? "2.5s" : "3s"
+                            }}
+                          />
+
+                          {/* Radar Pulse 2 */}
+                          <circle
+                            cx={cx}
+                            cy={cy}
+                            r={isPrimary ? 14 : 10}
+                            fill="none"
+                            stroke={isPrimary ? "#E5A93C" : (isHovered ? "#E5A93C" : "#8B1E0F")}
+                            strokeWidth="1.5"
+                            className="animate-pulse"
+                            style={{
+                              transformOrigin: `${cx}px ${cy}px`,
+                              animationDuration: "2s"
+                            }}
+                          />
+
+                          {/* Core Node Center */}
+                          {isPrimary ? (
+                            <path
+                              d={`M ${cx} ${cy - 7} L ${cx + 7} ${cy} L ${cx} ${cy + 7} L ${cx - 7} ${cy} Z`}
+                              fill="#8B1E0F"
+                              stroke="#E5A93C"
+                              strokeWidth="1.5"
+                              className="transition-colors duration-200"
+                            />
+                          ) : (
+                            <circle
+                              cx={cx}
+                              cy={cy}
+                              r={5}
+                              fill={isHovered ? "#8B1E0F" : "#E5A93C"}
+                              className="transition-colors duration-200"
+                            />
+                          )}
+                        </g>
+                      );
+                    })}
+                  </svg>
+
+                  {/* Floating Interactive Hub Detail Badge */}
+                  {MOCK_MAP_HUBS.map((hub) => {
+                    const cx = hub.coordinates.x;
+                    const cy = hub.coordinates.y;
+                    const isHovered = hoveredHub === hub.id;
+
+                    if (!isHovered) return null;
+
+                    return (
+                      <motion.div
+                        key={hub.id}
+                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        className="absolute z-20 bg-white/95 dark:bg-slate-950/95 border border-slate-200/80 dark:border-slate-800/60 rounded-xl p-3 shadow-2xl pointer-events-none max-w-[200px] text-slate-800 dark:text-slate-200 backdrop-blur-md"
+                        style={{
+                          left: `${cx}%`,
+                          top: `${cy - 20}%`,
+                          transform: "translate(-50%, -100%)",
+                        }}
+                      >
+                        <div className="text-xs font-extrabold text-slate-900 dark:text-white">{hub.name} Hub</div>
+                        <div className="text-[10px] text-[#E5A93C] font-bold mt-1">
+                          {hub.isPrimary ? "Academic Headquarters" : `${hub.alumniCount}+ Alumni Active`}
+                        </div>
+                        <div className="text-[9px] text-slate-500 dark:text-slate-450 mt-1 border-t border-slate-250 dark:border-slate-900 pt-1">
+                          Top: {hub.topCompanies.slice(0, 3).join(", ")}
+                        </div>
+                      </motion.div>
                     );
                   })}
-                </svg>
-
-                {/* Floating Interactive Hub Detail Badge */}
-                {MOCK_MAP_HUBS.map((hub) => {
-                  const cx = hub.coordinates.x;
-                  const cy = hub.coordinates.y;
-                  const isHovered = hoveredHub === hub.id;
-
-                  if (!isHovered) return null;
-
-                  return (
-                    <motion.div
-                      key={hub.id}
-                      initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      className="absolute z-20 bg-slate-950/95 border border-crimson-500/30 rounded-xl p-3 shadow-2xl shadow-black pointer-events-none max-w-[200px]"
-                      style={{
-                        left: `${cx}%`,
-                        top: `${cy - 20}%`,
-                        transform: "translate(-50%, -100%)",
-                      }}
-                    >
-                      <div className="text-xs font-extrabold text-white">{hub.name} Hub</div>
-                      <div className="text-[10px] text-gold-500 font-bold mt-1">
-                        {hub.alumniCount}+ Alumni Active
-                      </div>
-                      <div className="text-[9px] text-slate-400 mt-1 border-t border-slate-900 pt-1">
-                        Top: {hub.topCompanies.slice(0, 3).join(", ")}
-                      </div>
-                    </motion.div>
-                  );
-                })}
+                </ErrorBoundary>
 
                 {/* Standard floating markers */}
                 <motion.div

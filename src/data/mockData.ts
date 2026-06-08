@@ -32,6 +32,7 @@ export interface MapHub {
   coordinates: { x: number; y: number }; // percentage coords (0-100) for responsive SVG plotting
   alumniCount: number;
   topCompanies: string[];
+  isPrimary?: boolean;
 }
 
 export const MOCK_STATS = [
@@ -308,51 +309,59 @@ export const MOCK_SUCCESS_STORIES: SuccessStory[] = [
 
 export const MOCK_MAP_HUBS: MapHub[] = [
   {
+    id: "chennai",
+    name: "SRM Ramapuram Campus (Chennai)",
+    coordinates: { x: 51.5, y: 59.5 },
+    alumniCount: 15000,
+    topCompanies: ["Google", "Microsoft", "Zoho", "Amazon", "TCS", "Cognizant"],
+    isPrimary: true
+  },
+  {
     id: "h1",
     name: "San Francisco",
-    coordinates: { x: 15, y: 35 }, // responsive placement on global SVG map
+    coordinates: { x: 93, y: 35 }, // Shifted coordinates to center India
     alumniCount: 145,
     topCompanies: ["Google", "Stripe", "Tesla", "Apple"]
   },
   {
     id: "h2",
     name: "Seattle",
-    coordinates: { x: 17, y: 25 },
+    coordinates: { x: 95, y: 25 },
     alumniCount: 210,
     topCompanies: ["Amazon", "Microsoft", "Boeing"]
   },
   {
     id: "h3",
     name: "London",
-    coordinates: { x: 48, y: 28 },
+    coordinates: { x: 26, y: 28 },
     alumniCount: 98,
     topCompanies: ["Meta", "Google", "Barclays", "HSBC"]
   },
   {
     id: "h4",
     name: "Bengaluru",
-    coordinates: { x: 72, y: 58 },
+    coordinates: { x: 50, y: 58 },
     alumniCount: 650,
     topCompanies: ["Zoho", "Microsoft", "Amazon", "TCS", "Flipkart"]
   },
   {
     id: "h5",
     name: "Singapore",
-    coordinates: { x: 78, y: 64 },
+    coordinates: { x: 56, y: 64 },
     alumniCount: 85,
     topCompanies: ["DBS", "Schneider", "Grab", "Sea Group"]
   },
   {
     id: "h6",
     name: "Tokyo",
-    coordinates: { x: 86, y: 38 },
+    coordinates: { x: 64, y: 38 },
     alumniCount: 42,
     topCompanies: ["Intel", "Sony", "Rakuten", "Toyota"]
   },
   {
     id: "h7",
     name: "Sydney",
-    coordinates: { x: 90, y: 82 },
+    coordinates: { x: 68, y: 82 },
     alumniCount: 56,
     topCompanies: ["Atlassian", "Qualcomm", "Canva", "Macquarie"]
   }
