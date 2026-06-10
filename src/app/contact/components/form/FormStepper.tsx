@@ -2,6 +2,12 @@
 
 import { GraduationCap, Briefcase, CheckCircle2 } from "lucide-react";
 
+const STEPS = [
+  { id: 1, label: "Academic", icon: GraduationCap },
+  { id: 2, label: "Corporate", icon: Briefcase },
+  { id: 3, label: "Verify", icon: CheckCircle2 },
+];
+
 interface FormStepperProps {
   step: number;
   isSubmitting: boolean;
@@ -9,12 +15,6 @@ interface FormStepperProps {
 }
 
 export function FormStepper({ step, isSubmitting, onStepClick }: FormStepperProps) {
-  const steps = [
-    { id: 1, label: "Academic", icon: GraduationCap },
-    { id: 2, label: "Corporate", icon: Briefcase },
-    { id: 3, label: "Verify", icon: CheckCircle2 },
-  ];
-
   return (
     <div className="mb-8">
       <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-4">
@@ -28,7 +28,7 @@ export function FormStepper({ step, isSubmitting, onStepClick }: FormStepperProp
         />
       </div>
       <div className="grid grid-cols-3 gap-2 mt-4 text-center">
-        {steps.map((s) => (
+        {STEPS.map((s) => (
           <button
             key={s.id}
             type="button"
