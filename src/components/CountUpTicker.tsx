@@ -37,9 +37,9 @@ export default function CountUpTicker({ value }: CountUpTickerProps) {
     const isDecimal = numString.includes(".");
     const decimalPlaces = isDecimal ? numString.split(".")[1].length : 0;
 
-    // Smooth physics-based count up from 1 to target value in exactly 2.5 seconds
+    // Smooth physics-based count up from 1 to target value in exactly 1.5 seconds
     const controls = animate(1, targetNum, {
-      duration: 2.5,
+      duration: 1.5,
       ease: "easeOut",
       onUpdate(latestValue) {
         let formattedValue: string;

@@ -7,13 +7,13 @@ import { MOCK_MAP_HUBS } from "@/data/mockData";
 import { ErrorBoundary } from "../ErrorBoundary";
 
 const connectionArcs = [
-  { from: "Chennai", to: "San Francisco", d: "M 515 298 Q 722 100 930 175", duration: 2.5 },
-  { from: "Chennai", to: "London", d: "M 515 298 Q 387 180 260 140", duration: 2.0 },
-  { from: "Chennai", to: "Bengaluru", d: "M 515 298 Q 507 294 500 290", duration: 1.0 },
-  { from: "Chennai", to: "Singapore", d: "M 515 298 Q 537 309 560 320", duration: 1.2 },
-  { from: "Chennai", to: "Tokyo", d: "M 515 298 Q 577 190 640 190", duration: 2.2 },
-  { from: "Chennai", to: "Sydney", d: "M 515 298 Q 597 354 680 410", duration: 2.4 },
-  { from: "Chennai", to: "Seattle", d: "M 515 298 Q 732 100 950 125", duration: 2.6 },
+  { from: "Chennai", to: "San Francisco", d: "M 515 298 Q 722 100 930 175", duration: 1.5 },
+  { from: "Chennai", to: "London", d: "M 515 298 Q 387 180 260 140", duration: 1.2 },
+  { from: "Chennai", to: "Bengaluru", d: "M 515 298 Q 507 294 500 290", duration: 0.8 },
+  { from: "Chennai", to: "Singapore", d: "M 515 298 Q 537 309 560 320", duration: 1.0 },
+  { from: "Chennai", to: "Tokyo", d: "M 515 298 Q 577 190 640 190", duration: 1.3 },
+  { from: "Chennai", to: "Sydney", d: "M 515 298 Q 597 354 680 410", duration: 1.4 },
+  { from: "Chennai", to: "Seattle", d: "M 515 298 Q 732 100 950 125", duration: 1.6 },
 ];
 
 export function GlobalMap() {
@@ -78,9 +78,9 @@ export function GlobalMap() {
               return (
                 <g key={hub.id} onMouseEnter={() => setHoveredHub(hub.id)} onMouseLeave={() => setHoveredHub(null)} className="cursor-pointer">
                   {!shouldReduceMotion && (
-                    <circle cx={cx} cy={cy} r={isPrimary ? 24 : 18} fill="none" stroke={isPrimary ? "#8B1E0F" : (isHovered ? "#8B1E0F" : "#E5A93C")} strokeWidth={isPrimary ? "1.5" : "1"} className="animate-ping" style={{ transformOrigin: `${cx}px ${cy}px`, animationDuration: isPrimary ? "2.5s" : "3s" }} />
+                    <circle cx={cx} cy={cy} r={isPrimary ? 24 : 18} fill="none" stroke={isPrimary ? "#8B1E0F" : (isHovered ? "#8B1E0F" : "#E5A93C")} strokeWidth={isPrimary ? "1.5" : "1"} className="animate-ping" style={{ transformOrigin: `${cx}px ${cy}px`, animationDuration: isPrimary ? "1s" : "1.2s" }} />
                   )}
-                  <circle cx={cx} cy={cy} r={isPrimary ? 14 : 10} fill="none" stroke={isPrimary ? "#E5A93C" : (isHovered ? "#E5A93C" : "#8B1E0F")} strokeWidth="1.5" className={shouldReduceMotion ? "" : "animate-pulse"} style={{ transformOrigin: `${cx}px ${cy}px`, animationDuration: "2s" }} />
+                  <circle cx={cx} cy={cy} r={isPrimary ? 14 : 10} fill="none" stroke={isPrimary ? "#E5A93C" : (isHovered ? "#E5A93C" : "#8B1E0F")} strokeWidth="1.5" className={shouldReduceMotion ? "" : "animate-pulse"} style={{ transformOrigin: `${cx}px ${cy}px`, animationDuration: "1s" }} />
                   {isPrimary ? (
                     <path d={`M ${cx} ${cy - 7} L ${cx + 7} ${cy} L ${cx} ${cy + 7} L ${cx - 7} ${cy} Z`} fill="#8B1E0F" stroke="#E5A93C" strokeWidth="1.5" />
                   ) : (
