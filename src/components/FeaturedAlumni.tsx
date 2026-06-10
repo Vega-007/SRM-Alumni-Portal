@@ -2,25 +2,28 @@
 
 import { MOCK_ALUMNI, Alumni } from "@/data/mockData";
 import { Sparkles } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+
+// Map degree names to department styles to reflect specific disciplines (e.g. MCA Gen AI)
+const getDepartmentLabel = (alumniItem: Alumni) => {
+  if (alumniItem.name === "Aditya Vardhan") return "B.Tech CSE (AI & ML)";
+  if (alumniItem.name === "Ananya Sen") return "MCA (Gen AI)";
+  return alumniItem.degree;
+};
 
 function AlumniCard({ alumni }: { alumni: Alumni }) {
-  // Map degree names to department styles to reflect specific disciplines (e.g. MCA Gen AI)
-  const getDepartmentLabel = (alumniItem: Alumni) => {
-    if (alumniItem.name === "Aditya Vardhan") return "B.Tech CSE (AI & ML)";
-    if (alumniItem.name === "Ananya Sen") return "MCA (Gen AI)";
-    return alumniItem.degree;
-  };
-
   return (
     <div className="flex items-center gap-4 rounded-2xl bg-slate-100/40 dark:bg-slate-900/40 border border-slate-200/60 dark:border-slate-800/60 backdrop-blur-md p-4 min-w-[290px] max-w-[320px] transition-all duration-300 hover:scale-105 hover:border-srm-yellow/50 select-none shrink-0 group">
       
       {/* Profile Photo Thumbnail */}
-      <div className="h-11 w-11 rounded-full overflow-hidden shrink-0 border-2 border-slate-200 dark:border-slate-900 group-hover:border-srm-yellow/30 transition-colors">
-        <img
+      <div className="h-11 w-11 rounded-full overflow-hidden shrink-0 border-2 border-slate-200 dark:border-slate-900 group-hover:border-srm-yellow/30 transition-colors relative">
+        <Image
           src={alumni.imageUrl}
           alt={alumni.name}
-          loading="lazy"
-          className="h-full w-full object-cover"
+          fill
+          sizes="44px"
+          className="object-cover"
         />
       </div>
       
@@ -83,12 +86,12 @@ export default function FeaturedAlumni() {
             </p>
           </div>
           <div className="shrink-0">
-            <a
+            <Link
               href="/directory"
               className="inline-flex items-center gap-2 rounded-xl bg-srm-red hover:bg-srm-red/90 py-3 px-6 text-xs font-black uppercase text-white tracking-widest transition-all hover:shadow-lg hover:shadow-srm-red/20 active:scale-[0.98] border border-srm-red/20"
             >
               Explore Full Directory
-            </a>
+            </Link>
           </div>
         </div>
 

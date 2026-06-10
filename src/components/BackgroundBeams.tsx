@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 
 interface Beam {
   x: number;
@@ -15,7 +15,7 @@ interface Beam {
 
 export default function BackgroundBeams() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [mouse, setMouse] = useState({ x: 0, y: 0 });
+  const mouseRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -38,7 +38,7 @@ export default function BackgroundBeams() {
 
     // Track mouse coordinates
     const handleMouseMove = (e: MouseEvent) => {
-      setMouse({ x: e.clientX, y: e.clientY });
+      mouseRef.current = { x: e.clientX, y: e.clientY };
     };
     window.addEventListener("mousemove", handleMouseMove);
 
@@ -117,8 +117,8 @@ export default function BackgroundBeams() {
       // Draw and update beams
       beams.forEach((beam) => {
         // Subtle mouse influence: bend the angle slightly toward mouse
-        const dx = mouse.x - beam.x;
-        const dy = mouse.y - beam.y;
+        const dx = mouseRef.current.x - beam.x;
+        const dy = mouseRef.current.y - beam.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < 400) {
           const targetAngle = Math.atan2(dy, dx);
@@ -150,7 +150,7 @@ export default function BackgroundBeams() {
       window.removeEventListener("mousemove", handleMouseMove);
       cancelAnimationFrame(animationId);
     };
-  }, [mouse]);
+  }, []);
 
   return (
     <canvas

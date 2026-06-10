@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { m, useInView, LazyMotion, domAnimation } from "framer-motion";
 import { Users, Award, Building2, TrendingUp } from "lucide-react";
 import CountUpTicker from "./CountUpTicker";
 
@@ -62,7 +62,8 @@ export default function StatsSection() {
   const isChartInView = useInView(chartRef, { once: true, margin: "-50px" });
 
   return (
-    <section className="py-24 relative overflow-hidden bg-transparent">
+    <LazyMotion features={domAnimation}>
+      <section className="py-24 relative overflow-hidden bg-transparent">
       
       {/* Dynamic Ambient Background Glows */}
       <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-80 h-80 rounded-full bg-crimson-700/5 blur-3xl pointer-events-none" />
@@ -220,7 +221,7 @@ export default function StatsSection() {
 
                   {/* Area fill under trend line */}
                   {isChartInView && (
-                    <motion.path
+                    <m.path
                       d="M 10 70 Q 50 50 90 45 Q 130 35 170 15 L 170 75 L 10 75 Z"
                       fill="url(#chartGradient)"
                       initial={{ opacity: 0 }}
@@ -230,7 +231,7 @@ export default function StatsSection() {
                   )}
 
                   {/* Trend Line */}
-                  <motion.path
+                  <m.path
                     d="M 10 70 Q 50 50 90 45 Q 130 35 170 15"
                     fill="none"
                     stroke="#FFD200"
@@ -242,7 +243,7 @@ export default function StatsSection() {
                   />
 
                   {/* Glow underlay */}
-                  <motion.path
+                  <m.path
                     d="M 10 70 Q 50 50 90 45 Q 130 35 170 15"
                     fill="none"
                     stroke="#8B1E0F"
@@ -277,5 +278,6 @@ export default function StatsSection() {
 
       </div>
     </section>
+    </LazyMotion>
   );
 }

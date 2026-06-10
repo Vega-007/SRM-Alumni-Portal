@@ -2,26 +2,26 @@
 
 import { MOCK_COMPANIES } from "@/data/mockData";
 
+// Duplicate list to achieve infinite seamless loop
+const doubleCompanies = [...MOCK_COMPANIES, ...MOCK_COMPANIES];
+
+// Colors for logos when hovered (simulated with vibrant text-shadow/gradients)
+const getBrandStyle = (name: string) => {
+  switch (name) {
+    case "Google": return "hover:text-red-500 hover:border-red-500/20 hover:bg-red-500/5";
+    case "Amazon": return "hover:text-amber-500 hover:border-amber-500/20 hover:bg-amber-500/5";
+    case "Microsoft": return "hover:text-blue-500 hover:border-blue-500/20 hover:bg-blue-500/5";
+    case "Meta": return "hover:text-cyan-500 hover:border-cyan-500/20 hover:bg-cyan-500/5";
+    case "Apple": return "hover:text-slate-200 hover:border-slate-500/20 hover:bg-slate-500/5";
+    case "Netflix": return "hover:text-rose-600 hover:border-rose-500/20 hover:bg-rose-500/5";
+    case "Stripe": return "hover:text-indigo-500 hover:border-indigo-500/20 hover:bg-indigo-500/5";
+    case "Zoho": return "hover:text-yellow-500 hover:border-yellow-500/20 hover:bg-yellow-500/5";
+    case "TCS": return "hover:text-teal-400 hover:border-teal-500/20 hover:bg-teal-500/5";
+    default: return "hover:text-yellow-500 hover:border-yellow-500/20 hover:bg-yellow-500/5";
+  }
+};
+
 export default function CompanyMarquee() {
-  // Duplicate list to achieve infinite seamless loop
-  const doubleCompanies = [...MOCK_COMPANIES, ...MOCK_COMPANIES];
-
-  // Colors for logos when hovered (simulated with vibrant text-shadow/gradients)
-  const getBrandStyle = (name: string) => {
-    switch (name) {
-      case "Google": return "hover:text-red-500 hover:border-red-500/20 hover:bg-red-500/5";
-      case "Amazon": return "hover:text-amber-500 hover:border-amber-500/20 hover:bg-amber-500/5";
-      case "Microsoft": return "hover:text-blue-500 hover:border-blue-500/20 hover:bg-blue-500/5";
-      case "Meta": return "hover:text-cyan-500 hover:border-cyan-500/20 hover:bg-cyan-500/5";
-      case "Apple": return "hover:text-slate-200 hover:border-slate-500/20 hover:bg-slate-500/5";
-      case "Netflix": return "hover:text-rose-600 hover:border-rose-500/20 hover:bg-rose-500/5";
-      case "Stripe": return "hover:text-indigo-500 hover:border-indigo-500/20 hover:bg-indigo-500/5";
-      case "Zoho": return "hover:text-yellow-500 hover:border-yellow-500/20 hover:bg-yellow-500/5";
-      case "TCS": return "hover:text-teal-400 hover:border-teal-500/20 hover:bg-teal-500/5";
-      default: return "hover:text-yellow-500 hover:border-yellow-500/20 hover:bg-yellow-500/5";
-    }
-  };
-
   return (
     <section className="w-full bg-navy-950 border-y border-slate-900/60 py-10 overflow-hidden relative">
       {/* Soft gradient edge overlays for fade effect aligned with base canvas */}

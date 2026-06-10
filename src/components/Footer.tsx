@@ -77,9 +77,9 @@ export default function Footer() {
                   { icon: TwitterIcon, href: "https://twitter.com", label: "Twitter" },
                   { icon: InstagramIcon, href: "https://instagram.com", label: "Instagram" },
                   { icon: YoutubeIcon, href: "https://youtube.com", label: "YouTube" }
-                ].map((social, i) => (
+                ].map((social) => (
                   <a
-                    key={i}
+                    key={social.label}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -134,14 +134,14 @@ export default function Footer() {
               </h4>
               <ul className="space-y-3 text-sm">
                 <li>
-                  <a href="#" className="hover:text-srm-yellow transition-colors">
+                  <button type="button" className="hover:text-srm-yellow transition-colors cursor-pointer border-none bg-transparent p-0 m-0 text-sm text-slate-500 dark:text-slate-400">
                     Career Development Cell
-                  </a>
+                  </button>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-srm-yellow transition-colors">
+                  <button type="button" className="hover:text-srm-yellow transition-colors cursor-pointer border-none bg-transparent p-0 m-0 text-sm text-slate-500 dark:text-slate-400">
                     Research & Development
-                  </a>
+                  </button>
                 </li>
                 <li>
                   <Link
@@ -152,9 +152,9 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-srm-yellow transition-colors">
+                  <button type="button" className="hover:text-srm-yellow transition-colors cursor-pointer border-none bg-transparent p-0 m-0 text-sm text-slate-500 dark:text-slate-400">
                     Privacy Policy
-                  </a>
+                  </button>
                 </li>
               </ul>
             </div>
@@ -179,6 +179,7 @@ export default function Footer() {
                     value={emailInput}
                     onChange={(e) => setEmailInput(e.target.value)}
                     placeholder="alumni@srmist.edu.in"
+                    aria-label="Newsletter email address"
                     className="w-full rounded-lg border border-slate-250 dark:border-slate-800 bg-slate-100 dark:bg-slate-900/60 py-2 px-3 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 outline-none focus:border-srm-yellow/50"
                   />
                   <button
@@ -203,7 +204,7 @@ export default function Footer() {
           </div>
 
           <div className="border-t border-slate-200 dark:border-slate-900 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-            <p className="text-slate-500 dark:text-slate-500 text-center sm:text-left">
+            <p className="text-slate-500 dark:text-slate-500 text-center sm:text-left" suppressHydrationWarning>
               &copy; {new Date().getFullYear()} SRMIST Ramapuram Alumni Association. All rights reserved.
             </p>
             <p className="text-slate-500 dark:text-slate-600">

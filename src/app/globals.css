@@ -5,12 +5,12 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-display: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
   
-  /* SRM brand theme colors */
+  /* SRM brand theme colors - Refined for Professional Trust */
   --color-srm-blue: #004684;
-  --color-srm-yellow: #FFD200;
+  --color-srm-yellow: #F59E0B; /* Gold trust */
   --color-srm-red: #8B1E0F;
   --color-srm-lightBlue: #1A73E8;
 
@@ -19,9 +19,9 @@
   --color-navy-800: var(--navy-800);
   --color-navy-700: var(--navy-700);
   --color-navy-600: #3b82f6;
-  --color-gold-400: #f1c571;
-  --color-gold-500: #E5A93C;
-  --color-gold-600: #c28828;
+  --color-gold-400: #fbbf24;
+  --color-gold-500: #F59E0B;
+  --color-gold-600: #d97706;
   
   --color-crimson-400: #c22929;
   --color-crimson-500: #A31D1D;
@@ -34,35 +34,34 @@
 :root {
   --background: #ffffff;
   --foreground: #0f172a;
-  --font-inter: 'Inter', sans-serif;
-  --font-outfit: 'Outfit', sans-serif;
+  --font-ibm-plex: 'IBM Plex Sans', sans-serif;
 
   --navy-950: #ffffff;
   --navy-900: #f8fafc;
-  --navy-800: #e2e8f0;
-  --navy-700: #cbd5e1;
+  --navy-800: #f1f5f9;
+  --navy-700: #e2e8f0;
 }
 
 .dark {
-  --background: #050c1a;
+  --background: #0f172a; /* Deep navy from design system */
   --foreground: #f8fafc;
 
-  --navy-950: #050c1a;
-  --navy-900: #0a192f;
-  --navy-800: #112240;
-  --navy-700: #233554;
+  --navy-950: #0f172a;
+  --navy-900: #1e293b;
+  --navy-800: #334155;
+  --navy-700: #475569;
 }
 
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter);
+  font-family: var(--font-ibm-plex);
   overflow-x: hidden;
   background-image: 
-    radial-gradient(at 0% 0%, rgba(10, 25, 47, 0.03) 0px, transparent 50%),
-    radial-gradient(at 50% 0%, rgba(246, 179, 8, 0.01) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, rgba(10, 25, 47, 0.02) 0px, transparent 50%);
+    radial-gradient(at 0% 0%, rgba(15, 23, 42, 0.03) 0px, transparent 50%),
+    radial-gradient(at 50% 0%, rgba(245, 158, 11, 0.01) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(15, 23, 42, 0.02) 0px, transparent 50%);
   background-attachment: fixed;
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }

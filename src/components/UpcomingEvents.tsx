@@ -1,39 +1,40 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m, LazyMotion, domAnimation } from "framer-motion";
 import { Calendar, MapPin, Clock, ArrowRight, Sparkles } from "lucide-react";
 import { MOCK_EVENTS, AlumniEvent } from "@/data/mockData";
 import Link from "next/link";
+import Image from "next/image";
 
 interface UpcomingEventsProps {
   limit?: number;
 }
 
-export function EventBrochureCard({ event }: { event: AlumniEvent }) {
-  // Map event IDs to specific brand glow highlights to reflect the SRM brand colors dynamically
-  const getGlowColor = (id: string) => {
-    switch (id) {
-      case "e1": return "hover:shadow-srm-blue/20 hover:border-srm-blue/40";
-      case "e2": return "hover:shadow-srm-yellow/25 hover:border-srm-yellow/40";
-      case "e3": return "hover:shadow-srm-red/20 hover:border-srm-red/40";
-      default: return "hover:shadow-[#1A73E8]/20 hover:border-[#1A73E8]/40";
-    }
-  };
+// Map event IDs to specific brand glow highlights to reflect the SRM brand colors dynamically
+const getGlowColor = (id: string) => {
+  switch (id) {
+    case "e1": return "hover:shadow-srm-blue/20 hover:border-srm-blue/40";
+    case "e2": return "hover:shadow-srm-yellow/25 hover:border-srm-yellow/40";
+    case "e3": return "hover:shadow-srm-red/20 hover:border-srm-red/40";
+    default: return "hover:shadow-[#1A73E8]/20 hover:border-[#1A73E8]/40";
+  }
+};
 
-
+function EventBrochureCard({ event }: { event: AlumniEvent }) {
   return (
-    <motion.div
+    <m.div
       whileHover={{ y: -8 }}
       transition={{ duration: 0.3 }}
       className={`flex flex-col rounded-3xl border border-slate-200/80 dark:border-slate-800/60 bg-white/60 dark:bg-slate-950/60 backdrop-blur-md overflow-hidden transition-all duration-300 hover:shadow-2xl ${getGlowColor(event.id)} group`}
     >
       {/* 3:4 Aspect Ratio Image Section */}
       <div className="relative aspect-[3/4] w-full overflow-hidden bg-slate-100 dark:bg-slate-900">
-        <img
+        <Image
           src={event.imageUrl}
           alt={event.title}
-          loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
         {/* Dark Vignette Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent" />
@@ -83,7 +84,7 @@ export function EventBrochureCard({ event }: { event: AlumniEvent }) {
           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
         </a>
       </div>
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -91,48 +92,50 @@ export default function UpcomingEvents({ limit }: UpcomingEventsProps) {
   const eventsToShow = limit ? MOCK_EVENTS.slice(0, limit) : MOCK_EVENTS;
 
   return (
-    <section className="py-24 relative overflow-hidden border-t border-slate-200 dark:border-slate-800/40">
-      {/* Background Elements */}
-      <div className="absolute top-1/3 right-1/4 w-72 h-72 rounded-full bg-srm-blue/5 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/3 left-1/4 w-72 h-72 rounded-full bg-srm-red/5 blur-3xl pointer-events-none" />
+    <LazyMotion features={domAnimation}>
+      <section className="py-24 relative overflow-hidden border-t border-slate-200 dark:border-slate-800/40">
+        {/* Background Elements */}
+        <div className="absolute top-1/3 right-1/4 w-72 h-72 rounded-full bg-srm-blue/5 blur-3xl pointer-events-none" />
+        <div className="absolute bottom-1/3 left-1/4 w-72 h-72 rounded-full bg-srm-red/5 blur-3xl pointer-events-none" />
 
-      <div className="mx-auto max-w-7xl px-6 md:px-8">
-        
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-          <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-1.5 rounded-full border border-srm-red/20 bg-srm-red/5 px-3 py-1 text-[10px] font-black uppercase text-srm-red tracking-widest mb-3">
-              <Sparkles className="h-3 w-3" />
-              <span>Campus Networking</span>
-            </div>
-            <h2 className="font-display text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50 sm:text-4xl">
-              Upcoming <span className="text-transparent bg-clip-text bg-gradient-to-r from-srm-red via-srm-lightBlue to-srm-blue">Alumni Events</span>
-            </h2>
-            <p className="mt-4 text-base text-slate-600 dark:text-slate-400 leading-relaxed">
-              Mark your calendars for upcoming conferences, webinars, hackathons, and global alumni gatherings designed to advance your network.
-            </p>
-          </div>
+        <div className="mx-auto max-w-7xl px-6 md:px-8">
           
-          {!limit && (
-            <div className="shrink-0">
-              <Link
-                href="/events"
-                className="inline-flex items-center gap-2 rounded-xl bg-srm-blue hover:bg-srm-blue/90 py-3 px-6 text-xs font-black uppercase text-white tracking-widest transition-all hover:shadow-lg hover:shadow-srm-blue/20 active:scale-[0.98] border border-srm-blue/20 shadow-md"
-              >
-                View Event Showcase
-              </Link>
+          {/* Section Header */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <div className="max-w-2xl">
+              <div className="inline-flex items-center gap-1.5 rounded-full border border-srm-red/20 bg-srm-red/5 px-3 py-1 text-[10px] font-black uppercase text-srm-red tracking-widest mb-3">
+                <Sparkles className="h-3 w-3" />
+                <span>Campus Networking</span>
+              </div>
+              <h2 className="font-display text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50 sm:text-4xl">
+                Upcoming <span className="text-transparent bg-clip-text bg-gradient-to-r from-srm-red via-srm-lightBlue to-srm-blue">Alumni Events</span>
+              </h2>
+              <p className="mt-4 text-base text-slate-600 dark:text-slate-400 leading-relaxed">
+                Mark your calendars for upcoming conferences, webinars, hackathons, and global alumni gatherings designed to advance your network.
+              </p>
             </div>
-          )}
-        </div>
+            
+            {!limit && (
+              <div className="shrink-0">
+                <Link
+                  href="/events"
+                  className="inline-flex items-center gap-2 rounded-xl bg-srm-blue hover:bg-srm-blue/90 py-3 px-6 text-xs font-black uppercase text-white tracking-widest transition-all hover:shadow-lg hover:shadow-srm-blue/20 active:scale-[0.98] border border-srm-blue/20 shadow-md"
+                >
+                  View Event Showcase
+                </Link>
+              </div>
+            )}
+          </div>
 
-        {/* Event Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-          {eventsToShow.map((event) => (
-            <EventBrochureCard key={event.id} event={event} />
-          ))}
-        </div>
+          {/* Event Cards Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            {eventsToShow.map((event) => (
+              <EventBrochureCard key={event.id} event={event} />
+            ))}
+          </div>
 
-      </div>
-    </section>
+        </div>
+      </section>
+    </LazyMotion>
   );
 }

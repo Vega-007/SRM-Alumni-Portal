@@ -4,8 +4,17 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Menu, X, ShieldAlert, Sun, Moon } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence, LazyMotion, domAnimation } from "framer-motion";
 import AdminLoginModal from "./AdminLoginModal";
+import Image from "next/image";
+
+const navLinks = [
+  { label: "Home", href: "/" },
+  { label: "Alumni Directory", href: "/directory" },
+  { label: "Events", href: "/events" },
+  { label: "Success Stories", href: "/success-stories" },
+  { label: "Contact", href: "/contact" }
+];
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -15,17 +24,22 @@ export default function Navbar() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-    try {
-      const savedTheme = localStorage.getItem("theme") as "dark" | "light" | null;
-      const initialTheme = savedTheme || (document.documentElement.classList.contains("dark") ? "dark" : "light");
-      setTheme(initialTheme);
-      if (initialTheme === "dark") {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
-    } catch (e) {}
+    // Defer state updates to avoid cascading render warning
+    const timer = setTimeout(() => {
+      setMounted(true);
+      try {
+        const savedTheme = localStorage.getItem("theme") as "dark" | "light" | null;
+        if (savedTheme) {
+          setTheme(savedTheme);
+          if (savedTheme === "dark") {
+            document.documentElement.classList.add("dark");
+          } else {
+            document.documentElement.classList.remove("dark");
+          }
+        }
+      } catch {}
+    }, 0);
+    return () => clearTimeout(timer);
   }, []);
 
   const toggleTheme = () => {
@@ -38,28 +52,23 @@ export default function Navbar() {
       } else {
         document.documentElement.classList.remove("dark");
       }
-    } catch (e) {}
+    } catch {}
   };
 
-  const navLinks = [
-    { label: "Home", href: "/" },
-    { label: "Alumni Directory", href: "/directory" },
-    { label: "Events", href: "/events" },
-    { label: "Success Stories", href: "/success-stories" },
-    { label: "Contact", href: "/contact" }
-  ];
-
   return (
-    <>
+    <LazyMotion features={domAnimation}>
       <header className="sticky top-0 z-40 w-full border-b border-white/10 bg-srm-blue text-white transition-all duration-300">
         <div className="mx-auto flex max-w-7xl h-20 items-center justify-between px-6 md:px-8">
           
           {/* Logo Container featuring Official SRMIST seal & typography */}
-          <Link href="/" className="flex items-center gap-3 group select-none">
-            <img 
+          <Link href="/" className="flex items-center gap-3 group select-none relative h-14 w-40">
+            <Image 
               src="/srm-logo.png" 
               alt="SRM Institute of Science and Technology" 
-              className="h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+              fill
+              sizes="(max-width: 768px) 160px, 160px"
+              className="object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+              priority
             />
           </Link>
 
@@ -86,6 +95,7 @@ export default function Navbar() {
           {/* Desktop Admin Login CTA & Theme Toggle */}
           <div className="hidden md:flex items-center gap-3">
             <button
+              type="button"
               onClick={toggleTheme}
               className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-srm-blue border border-white/20 hover:bg-srm-blue/80 hover:border-srm-yellow text-slate-200 hover:text-white transition-all duration-200 cursor-pointer shadow-sm"
               aria-label="Toggle theme"
@@ -100,6 +110,7 @@ export default function Navbar() {
               )}
             </button>
             <button
+              type="button"
               onClick={() => setIsAdminModalOpen(true)}
               className="inline-flex items-center gap-2 rounded-xl bg-srm-blue border border-white/20 hover:border-srm-yellow hover:bg-srm-blue/80 py-2.5 px-5 text-sm font-semibold text-white/90 transition-all duration-200 cursor-pointer shadow-sm hover:text-white"
             >
@@ -111,6 +122,7 @@ export default function Navbar() {
           {/* Mobile Actions Container */}
           <div className="flex items-center gap-2 md:hidden">
             <button
+              type="button"
               onClick={toggleTheme}
               className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/20 text-slate-200 hover:bg-srm-blue/80 hover:text-white transition-colors"
               aria-label="Toggle theme"
@@ -124,6 +136,7 @@ export default function Navbar() {
               )}
             </button>
             <button
+              type="button"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/20 text-slate-200 hover:bg-srm-blue/80 hover:text-white transition-colors"
               aria-label="Toggle menu"
@@ -138,7 +151,7 @@ export default function Navbar() {
           {isMobileMenuOpen && (
             <>
               {/* Backdrop Overlay */}
-              <motion.div
+              <m.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -147,7 +160,7 @@ export default function Navbar() {
               />
 
               {/* Sliding Panel */}
-              <motion.div
+              <m.div
                 initial={{ x: "100%" }}
                 animate={{ x: 0 }}
                 exit={{ x: "100%" }}
@@ -159,6 +172,7 @@ export default function Navbar() {
                   <div className="flex items-center justify-between mb-8 pb-4 border-b border-white/10">
                     <span className="font-display font-extrabold text-sm tracking-widest text-srm-yellow">SRM ALUMNI</span>
                     <button
+                      type="button"
                       onClick={() => setIsMobileMenuOpen(false)}
                       className="p-1 rounded-lg border border-white/10 text-slate-200 hover:text-white"
                       aria-label="Close menu"
@@ -190,6 +204,7 @@ export default function Navbar() {
                 {/* Footer Controls */}
                 <div className="space-y-4">
                   <button
+                    type="button"
                     onClick={() => {
                       setIsMobileMenuOpen(false);
                       setIsAdminModalOpen(true);
@@ -203,7 +218,7 @@ export default function Navbar() {
                     Ramapuram Campus
                   </p>
                 </div>
-              </motion.div>
+              </m.div>
             </>
           )}
         </AnimatePresence>
@@ -211,6 +226,6 @@ export default function Navbar() {
 
       {/* Admin Login Modal Overlay */}
       <AdminLoginModal isOpen={isAdminModalOpen} onClose={() => setIsAdminModalOpen(false)} />
-    </>
+    </LazyMotion>
   );
 }

@@ -35,13 +35,6 @@ export interface MapHub {
   isPrimary?: boolean;
 }
 
-export const MOCK_STATS = [
-  { label: "Total Alumni", value: "15,000+", detail: "Across 45+ countries" },
-  { label: "Highest Package", value: "₹42.5 LPA", detail: "Offered by Amazon" },
-  { label: "Partner Companies", value: "500+", detail: "Recruiting globally" },
-  { label: "Placement Rate", value: "98.2%", detail: "Consistent past 5 years" }
-];
-
 export const MOCK_COMPANIES = [
   { name: "Google", logoText: "Google" },
   { name: "Amazon", logoText: "Amazon" },
