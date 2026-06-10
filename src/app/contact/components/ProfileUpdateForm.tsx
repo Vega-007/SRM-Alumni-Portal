@@ -476,8 +476,12 @@ export function ProfileUpdateForm() {
                     : "border-slate-300 dark:border-slate-800 hover:border-srm-blue cursor-pointer"
                 }`}
               >
+                <label htmlFor="file-upload" className="sr-only">
+                  Upload verification document
+                </label>
                 <input
                   type="file"
+                  id="file-upload"
                   ref={fileInputRef}
                   onChange={handleFileSelect}
                   accept=".pdf, .png, .jpg, .jpeg"
@@ -556,7 +560,12 @@ export function ProfileUpdateForm() {
             disabled={isSubmitting || isUploading || !file}
             className="bg-srm-red text-white px-7 py-3 rounded-xl text-sm font-bold disabled:opacity-50"
           >
-            {isSubmitting ? <Loader2 className="h-4 w-4 animate-spin" /> : "Submit Profile Update"}
+            {isSubmitting ? (
+              <span className="flex items-center gap-2">
+                <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
+                Submitting...
+              </span>
+            ) : "Submit Profile Update"}
           </button>
         )}
       </div>
