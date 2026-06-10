@@ -186,17 +186,17 @@ export function ProfileUpdateForm() {
     }, 150);
   };
 
-  const handleDragOver = (e: DragEvent<HTMLDivElement>) => {
+  const handleDragOver = (e: DragEvent<HTMLButtonElement>) => {
     e.preventDefault();
     dispatch({ type: "SET_DRAGGING", isDragging: true });
   };
 
-  const handleDragLeave = (e: DragEvent<HTMLDivElement>) => {
+  const handleDragLeave = (e: DragEvent<HTMLButtonElement>) => {
     e.preventDefault();
     dispatch({ type: "SET_DRAGGING", isDragging: false });
   };
 
-  const handleDrop = (e: DragEvent<HTMLDivElement>) => {
+  const handleDrop = (e: DragEvent<HTMLButtonElement>) => {
     e.preventDefault();
     dispatch({ type: "SET_DRAGGING", isDragging: false });
     if (e.dataTransfer.files?.[0]) {
@@ -454,70 +454,67 @@ export function ProfileUpdateForm() {
                 <p className="text-xs text-slate-500 dark:text-slate-400">Scanned copy of Degree/Marksheet.</p>
               </div>
 
-              <div
-                onDragOver={handleDragOver}
-                onDragLeave={handleDragLeave}
-                onDrop={handleDrop}
-                onClick={() => !file && !isUploading && fileInputRef.current?.click()}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    if (!file && !isUploading) fileInputRef.current?.click();
-                  }
-                }}
-                role="button"
-                tabIndex={0}
-                aria-label="Upload verification document"
-                className={`relative rounded-xl border-2 border-dashed p-8 text-center transition-all duration-200 ${
-                  isDragging
-                    ? "border-srm-yellow bg-srm-yellow/5 scale-[1.01]"
-                    : file
-                    ? "border-emerald-500/50 bg-emerald-50/10"
-                    : "border-slate-300 dark:border-slate-800 hover:border-srm-blue cursor-pointer"
-                }`}
-              >
-                <label htmlFor="file-upload" className="sr-only">
-                  Upload verification document
-                </label>
-                <input
-                  type="file"
-                  id="file-upload"
-                  ref={fileInputRef}
-                  onChange={handleFileSelect}
-                  accept=".pdf, .png, .jpg, .jpeg"
-                  className="hidden"
-                  disabled={isUploading || !!file}
-                />
-
-                {isUploading ? (
-                  <div className="space-y-3 py-4">
-                    <Loader2 className="h-10 w-10 text-srm-blue animate-spin mx-auto" />
-                    <span className="text-sm font-semibold">Uploading...</span>
-                    <div className="w-full max-w-xs bg-slate-200 h-2 rounded-full mx-auto overflow-hidden">
-                      <div className="bg-srm-blue h-full" style={{ width: `${uploadProgress}%` }} />
-                    </div>
-                  </div>
-                ) : file ? (
+              {file ? (
+                <div
+                  className={`relative rounded-xl border-2 border-dashed p-8 text-center transition-all duration-200 border-emerald-500/50 bg-emerald-50/10`}
+                >
                   <div className="space-y-4 py-2">
                     <FileText className="h-10 w-10 mx-auto text-emerald-600" />
                     <span className="text-sm font-bold block">{file.name}</span>
                     <button
                       type="button"
                       onClick={(e) => { e.stopPropagation(); handleRemoveFile(); }}
-                      className="text-rose-600 text-xs font-semibold flex items-center gap-1 mx-auto"
+                      className="text-rose-600 text-xs font-semibold flex items-center gap-1 mx-auto cursor-pointer"
                       aria-label="Remove uploaded file"
                     >
                       <Trash2 className="h-3.5 w-3.5" /> Remove
                     </button>
                   </div>
-                ) : (
-                  <div className="space-y-4 py-4">
-                    <UploadCloud className="h-10 w-10 mx-auto text-srm-blue" />
-                    <span className="text-sm font-bold block">Drag & Drop or Click to Upload</span>
-                    <span className="text-[10px] uppercase font-bold text-slate-500">PDF, PNG, JPEG up to 5MB</span>
-                  </div>
-                )}
-              </div>
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  onDragOver={handleDragOver}
+                  onDragLeave={handleDragLeave}
+                  onDrop={handleDrop}
+                  onClick={() => !isUploading && fileInputRef.current?.click()}
+                  aria-label="Upload verification document"
+                  className={`relative w-full rounded-xl border-2 border-dashed p-8 text-center transition-all duration-200 ${
+                    isDragging
+                      ? "border-srm-yellow bg-srm-yellow/5 scale-[1.01]"
+                      : "border-slate-300 dark:border-slate-800 hover:border-srm-blue cursor-pointer"
+                  }`}
+                >
+                  <label htmlFor="file-upload" className="sr-only">
+                    Upload verification document
+                  </label>
+                  <input
+                    type="file"
+                    id="file-upload"
+                    ref={fileInputRef}
+                    onChange={handleFileSelect}
+                    accept=".pdf, .png, .jpg, .jpeg"
+                    className="hidden"
+                    disabled={isUploading}
+                  />
+
+                  {isUploading ? (
+                    <div className="space-y-3 py-4">
+                      <Loader2 className="h-10 w-10 text-srm-blue animate-spin mx-auto" />
+                      <span className="text-sm font-semibold">Uploading...</span>
+                      <div className="w-full max-w-xs bg-slate-200 h-2 rounded-full mx-auto overflow-hidden">
+                        <div className="bg-srm-blue h-full" style={{ width: `${uploadProgress}%` }} />
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="space-y-4 py-4">
+                      <UploadCloud className="h-10 w-10 mx-auto text-srm-blue" />
+                      <span className="text-sm font-bold block">Drag & Drop or Click to Upload</span>
+                      <span className="text-[10px] uppercase font-bold text-slate-500">PDF, PNG, JPEG up to 5MB</span>
+                    </div>
+                  )}
+                </button>
+              )}
               {errors.file && <p className="text-xs text-rose-500 font-semibold">{errors.file}</p>}
 
               <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/30 p-4">
